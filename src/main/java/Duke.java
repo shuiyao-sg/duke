@@ -60,7 +60,7 @@ public class Duke {
                             int index = Integer.parseInt(inputArray[1]) - 1;
                             Task task = list.get(index);
                             list.remove(index);
-                            printTaskAdded(list, task);
+                            printTaskDeleted(list, task);
                         } catch (ArrayIndexOutOfBoundsException e) {
                             throw new DukeIllegalArgumentException("Please enter an integer after 'delete'");
                         } catch (NumberFormatException e) {
