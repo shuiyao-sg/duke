@@ -1,3 +1,6 @@
+import cs2103t.duke.exceptions.DukeException;
+import cs2103t.duke.exceptions.DukeIllegalArgumentException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -24,43 +27,57 @@ public class Duke {
         while (sc.hasNextLine()) {
             String input = sc.nextLine();
 
-            if (input.equals("bye")) {
-                bye();
-                sc.close();
-                break;
-            } else if (input.equals("list")) {
-                printList(list);
-            } else if (input.startsWith("done ")) {
-                String[] doneCommand = input.split(" ");
-                int index = Integer.parseInt(doneCommand[1]) - 1;
-                Task task = list.get(index);
-                task.markAsDone();
-                printDoneTask(task);
-            } else {
-                String[] inputArray = input.split(" ");
-
-                if (inputArray[0].equals("todo")) {
-                    String des = reformString(inputArray, 1, inputArray.length - 1);
-                    Task task = new ToDo(des);
-                    list.add(task);
-                    printTaskAdded(list, task);
-                } else if (inputArray[0].equals("deadline")) {
-                    String newInput = reformString(inputArray, 1, inputArray.length - 1);
-                    String[] newInputArray = newInput.split("/by");
-                    String des = newInputArray[0].trim();
-                    String by = newInputArray[1].trim();
-                    Task task = new Deadline(des, by);
-                    list.add(task);
-                    printTaskAdded(list, task);
-                } else if (inputArray[0].equals("event")) {
-                    String newInput = reformString(inputArray, 1, inputArray.length - 1);
-                    String[] newInputArray = newInput.split("/at");
-                    String des = newInputArray[0].trim();
-                    String at = newInputArray[1].trim();
-                    Task task = new Event(des, at);
-                    list.add(task);
-                    printTaskAdded(list, task);
+            try {
+                if (input.isBlank()) {
+                    throw new DukeIllegalArgumentException("Empty user input is not allowed");
                 }
+
+                if (input.equals("bye")) {
+                    bye();
+                    sc.close();
+                    break;
+                } else if (input.equals("list")) {
+                    printList(list);
+                } else {
+                    String[] inputArray = input.split(" ");
+                    if (inputArray[0].equals("done")) {
+                        try {
+                            int index = Integer.parseInt(inputArray[1]) - 1;
+                            Task task = list.get(index);
+                            task.markAsDone();
+                            printDoneTask(task);
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            throw new DukeIllegalArgumentException("Please enter an integer after 'done'");
+                        } catch (NumberFormatException e) {
+                            throw new DukeIllegalArgumentException("Input is not an integer. "
+                                    + "Please enter an integer after 'done'");
+                        } catch (IndexOutOfBoundsException e) {
+                            throw new DukeIllegalArgumentException("Please input a number between 1 and "
+                                    + list.size() + " (inclusive)");
+                        }
+                    } else if (inputArray[0].equals("todo")) {
+                        String des = reformString(inputArray, 1, inputArray.length - 1);
+                        Task task = new ToDo(des);
+                        list.add(task);
+                        printTaskAdded(list, task);
+                    } else if (inputArray[0].equals("deadline")) {
+                        String newInput = reformString(inputArray, 1, inputArray.length - 1);
+                        Task task = Deadline.genDeadline(newInput);
+                        list.add(task);
+                        printTaskAdded(list, task);
+                    } else if (inputArray[0].equals("event")) {
+                        String newInput = reformString(inputArray, 1, inputArray.length - 1);
+                        Task task = Event.genEvent(newInput);
+                        list.add(task);
+                        printTaskAdded(list, task);
+                    } else {
+                        String secondLine = "Permissible command: [list], [done], [todo], [deadline], [event], [bye]";
+                        throw new DukeIllegalArgumentException("Illegal user input.\n"
+                                + String.format("%1$" + (secondLine.length() + 5) + "s", secondLine));
+                    }
+                }
+            } catch (DukeException e) {
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -118,7 +135,7 @@ public class Duke {
 
     private static String reformString(String[] arr, int start, int end) {
         String output = "";
-        for (int i = start; i <= end && i < arr.length; i++) {
+        for (int i = start; i <= end; i++) {
             output += arr[i] + " ";
         }
         return output.trim();
