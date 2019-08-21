@@ -55,6 +55,21 @@ public class Duke {
                             throw new DukeIllegalArgumentException("Please input a number between 1 and "
                                     + list.size() + " (inclusive)");
                         }
+                    } else if (inputArray[0].equals("delete")) {
+                        try {
+                            int index = Integer.parseInt(inputArray[1]) - 1;
+                            Task task = list.get(index);
+                            list.remove(index);
+                            printTaskAdded(list, task);
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            throw new DukeIllegalArgumentException("Please enter an integer after 'delete'");
+                        } catch (NumberFormatException e) {
+                            throw new DukeIllegalArgumentException("Input is not an integer. "
+                                    + "Please enter an integer after 'delete'");
+                        } catch (IndexOutOfBoundsException e) {
+                            throw new DukeIllegalArgumentException("Please input a number between 1 and "
+                                    + list.size() + " (inclusive)");
+                        }
                     } else if (inputArray[0].equals("todo")) {
                         String des = reformString(inputArray, 1, inputArray.length - 1);
                         Task task = new ToDo(des);
@@ -125,6 +140,16 @@ public class Duke {
     private static void printTaskAdded(List<Task> list, Task task) {
         System.out.println(HORIZONTAL_LINE);
         String firstLine = "Got it. I've added this task:";
+        printTask(list, task, firstLine);
+    }
+
+    private static void printTaskDeleted(List<Task> list, Task task) {
+        System.out.println(HORIZONTAL_LINE);
+        String firstLine = "Noted. I've removed this task:";
+        printTask(list, task, firstLine);
+    }
+
+    private static void printTask(List<Task> list, Task task, String firstLine) {
         String lastLine = "Now you have" + " " + list.size() + " " + "tasks in the list.";
         System.out.printf("%1$" + (firstLine.length() + 5) + "s\n", firstLine);
         System.out.printf("%1$" + (task.toString().length() + 7) + "s\n", task.toString());
