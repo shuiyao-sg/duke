@@ -1,0 +1,4 @@
+[T][✓] read book 1
+[T][✓] read book 2
+[T][✓] read book 4
+[D][✘] return book 1 by: Sunday
