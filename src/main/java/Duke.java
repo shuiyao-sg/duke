@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,7 +29,8 @@ public class Duke {
 //        FileWriter fw = new FileWriter(FILE_PATH, true);
 
         //initiate task list
-        List<Task> list = new ArrayList<>();
+//        List<Task> list = new ArrayList<>();
+        TaskList list = new TaskList();
 
         // read input file
         Scanner fileScanner = new Scanner(new File(FILE_PATH));
@@ -42,7 +42,8 @@ public class Duke {
         while (fileScanner.hasNextLine()) {
             String nextLineOfFile = fileScanner.nextLine().trim();
             Task task = genTaskFromFile(nextLineOfFile);
-            list.add(task);
+            //list.add(task);
+            list.addTask(task);
             //System.out.println(nextLineOfFile);
             System.out.printf("%1$" + (nextLineOfFile.length() + 5) + "s\n", nextLineOfFile);
         }
@@ -72,7 +73,8 @@ public class Duke {
                     if (inputArray[0].equals("done")) {
                         try {
                             int index = Integer.parseInt(inputArray[1]) - 1;
-                            Task task = list.get(index);
+                            //Task task = list.get(index);
+                            Task task = list.getTask(index);
 
                             String initialTaskString = task.toString();
 
@@ -109,8 +111,11 @@ public class Duke {
                     } else if (inputArray[0].equals("delete")) {
                         try {
                             int index = Integer.parseInt(inputArray[1]) - 1;
-                            Task task = list.get(index);
-                            list.remove(index);
+//                            Task task = list.get(index);
+//                            list.remove(index);
+//                            printTaskDeleted(list, task);
+                            Task task = list.getTask(index);
+                            list.deleteTask(index);
                             printTaskDeleted(list, task);
 
                             /*
@@ -144,7 +149,8 @@ public class Duke {
                     } else if (inputArray[0].equals("todo")) {
                         String des = reformString(inputArray, 1, inputArray.length - 1);
                         Task task = new ToDo(des);
-                        list.add(task);
+                        //list.add(task);
+                        list.addTask(task);
                         printTaskAdded(list, task);
 
                         // append to file
@@ -155,7 +161,8 @@ public class Duke {
                     } else if (inputArray[0].equals("deadline")) {
                         String newInput = reformString(inputArray, 1, inputArray.length - 1);
                         Task task = Deadline.genDeadline(newInput);
-                        list.add(task);
+                        //list.add(task);
+                        list.addTask(task);
                         printTaskAdded(list, task);
 
                         // append to file
@@ -166,7 +173,8 @@ public class Duke {
                     } else if (inputArray[0].equals("event")) {
                         String newInput = reformString(inputArray, 1, inputArray.length - 1);
                         Task task = Event.genEvent(newInput);
-                        list.add(task);
+                        //list.add(task);
+                        list.addTask(task);
                         printTaskAdded(list, task);
 
                         // append to file
@@ -212,6 +220,7 @@ public class Duke {
         System.out.println();
     }
 
+    /*
     private static void printList(List<Task> list) {
         System.out.println(HORIZONTAL_LINE);
         String heading = "Here are the tasks in your list:";
@@ -225,20 +234,42 @@ public class Duke {
         System.out.println(HORIZONTAL_LINE);
         System.out.println();
     }
+    */
+    private static void printList(TaskList list) {
+        System.out.println(HORIZONTAL_LINE);
+        String heading = "Here are the tasks in your list:";
+        System.out.printf("%1$" + (heading.length() + 5) + "s\n", heading);
+        System.out.println(list);
+        System.out.println(HORIZONTAL_LINE);
+        System.out.println();
+    }
 
-    private static void printTaskAdded(List<Task> list, Task task) {
+
+    private static void printTaskAdded(TaskList list, Task task) {
         System.out.println(HORIZONTAL_LINE);
         String firstLine = "Got it. I've added this task:";
         printTask(list, task, firstLine);
     }
 
-    private static void printTaskDeleted(List<Task> list, Task task) {
+    private static void printTaskDeleted(TaskList list, Task task) {
         System.out.println(HORIZONTAL_LINE);
         String firstLine = "Noted. I've removed this task:";
         printTask(list, task, firstLine);
     }
 
+    /*
     private static void printTask(List<Task> list, Task task, String firstLine) {
+        String lastLine = "Now you have" + " " + list.size() + " " + "tasks in the list.";
+        System.out.printf("%1$" + (firstLine.length() + 5) + "s\n", firstLine);
+        System.out.printf("%1$" + (task.toString().length() + 7) + "s\n", task.toString());
+        System.out.printf("%1$"+ (lastLine.length() + 5) + "s\n", lastLine);
+        System.out.println(HORIZONTAL_LINE);
+        System.out.println();
+    }
+
+     */
+
+    private static void printTask(TaskList list, Task task, String firstLine) {
         String lastLine = "Now you have" + " " + list.size() + " " + "tasks in the list.";
         System.out.printf("%1$" + (firstLine.length() + 5) + "s\n", firstLine);
         System.out.printf("%1$" + (task.toString().length() + 7) + "s\n", task.toString());
