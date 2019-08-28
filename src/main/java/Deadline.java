@@ -1,12 +1,14 @@
+import cs2103t.duke.date.MyDate;
 import cs2103t.duke.exceptions.DukeIllegalArgumentException;
 
 public class Deadline extends Task {
 
-    protected String by;
+//    protected String by;
+    protected MyDate by;
 
     public Deadline(String description, String by) {
         super(description);
-        this.by = by;
+        this.by = MyDate.genMyDate(by);
     }
 
     public static Deadline genDeadline(String s) {
@@ -24,6 +26,6 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + by + ")";
+        return "[D]" + super.toString() + " by: " + by.toString();
     }
 }
