@@ -1,7 +1,14 @@
 package cs2103t.duke.exceptions;
 
+/**
+ * Represents DukeException in general
+ */
 public class DukeException extends RuntimeException {
 
+    /**
+     * Constructs a DukeException object
+     * @param message
+     */
     public DukeException(String message) {
         super(message);
     }

@@ -1,15 +1,28 @@
 import cs2103t.duke.date.MyDate;
 import cs2103t.duke.exceptions.DukeIllegalArgumentException;
 
+/**
+ * Encapsulates deadline task.
+ */
 public class Deadline extends Task {
 
     protected MyDate by;
 
+    /**
+     * Constructs a Deadline object
+     * @param description
+     * @param by
+     */
     public Deadline(String description, String by) {
         super(description);
         this.by = MyDate.genMyDate(by);
     }
 
+    /**
+     * Generates a Deadline task from input String.
+     * @param s
+     * @return Deadline task
+     */
     public static Deadline genDeadline(String s) {
         String[] newInputArray = s.split("/by");
         String des, by;

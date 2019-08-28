@@ -1,10 +1,18 @@
 import cs2103t.duke.exceptions.DukeIllegalArgumentException;
 import cs2103t.duke.exceptions.RedundantOperationException;
 
+/**
+ * Encapsulates tasks.
+ */
 public class Task {
     protected String description;
     protected boolean isDone;
 
+    /**
+     * Constructs a Task object.
+     * @param description
+     * @throws DukeIllegalArgumentException
+     */
     public Task(String description) throws DukeIllegalArgumentException {
         if (description.isBlank()) {
             throw new DukeIllegalArgumentException("Please specify your task description after your command");
@@ -21,6 +29,9 @@ public class Task {
         return this.description;
     }
 
+    /**
+     * Marks the task as done.
+     */
     public void markAsDone() {
         if (this.isDone) {
             throw new RedundantOperationException("The task has already been done");
@@ -28,6 +39,11 @@ public class Task {
         this.isDone = true;
     }
 
+    /**
+     * Converts String in file to Task.
+     * @param s
+     * @return Task specified by the String
+     */
     public static Task genTaskFromFileString(String s) {
         char taskType = s.charAt(1);
         String isDone = s.charAt(4) + "";

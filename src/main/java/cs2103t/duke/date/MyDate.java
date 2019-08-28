@@ -1,5 +1,8 @@
 package cs2103t.duke.date;
 
+/**
+ * Encapsulates a date and time.
+ */
 public class MyDate {
     private int day;
     private Month month;
@@ -29,6 +32,11 @@ public class MyDate {
         this.toMin = toMin;
     }
 
+    /**
+     * Generates a MyDate object with a date String.
+     * @param date
+     * @return date specified by the String
+     */
     public static MyDate genMyDate(String date) {
         String[] tempArray = date.split(" ");
 

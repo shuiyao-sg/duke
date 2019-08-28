@@ -1,5 +1,8 @@
 package cs2103t.duke.date;
 
+/**
+ * Encapsulates a month, from January to December.
+ */
 public enum Month {
     JANUARY(1),
     FEBRUARY(2),
@@ -20,6 +23,11 @@ public enum Month {
         this.value = value;
     }
 
+    /**
+     * Parses int to corresponding Month object.
+     * @param i
+     * @return Month object
+     */
     public static Month parseFromInt(int i) {
         switch (i) {
             case 1:

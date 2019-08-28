@@ -3,6 +3,9 @@ import cs2103t.duke.exceptions.DukeException;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Encapsulates a text UI to deal with interactions with the user.
+ */
 public class TextUi {
     private static final int TEXT_INDENT_LEVEL = 5;
     private static final String INDENT_BY_FOUR = " " + " " + " " + " ";
@@ -31,6 +34,9 @@ public class TextUi {
         return String.format("%1$" + (input.length() + indentLevel) + "s\n", input);
     }
 
+    /**
+     * Starts the text UI.
+     */
     public void run() {
 
         TextUi.greet();

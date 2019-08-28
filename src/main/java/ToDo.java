@@ -1,5 +1,12 @@
+/**
+ * Encapsulates a ToDo task.
+ */
 public class ToDo extends Task {
 
+    /**
+     * Constructs a ToDo object.
+     * @param descprition
+     */
     public ToDo(String descprition) {
         super(descprition);
     }

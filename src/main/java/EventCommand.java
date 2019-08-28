@@ -1,10 +1,18 @@
 import java.io.IOException;
 
+/**
+ * Encapsulates an event command to create an event task.
+ */
 public class EventCommand extends Command {
     private static final String TASK_ADDED_MESSAGE = "Got it. I've added this task:";
 
     private Storage storage;
 
+    /**
+     * Constructs an EventCommand object.
+     * @param list
+     * @param input
+     */
     public EventCommand(TaskList list, String input) {
         super(list);
         super.task = Event.genEvent(input);
@@ -18,7 +26,7 @@ public class EventCommand extends Command {
         printTaskAdded(super.list, super.task);
     }
 
-    public static void printTaskAdded(TaskList list, Task task) {
+    private static void printTaskAdded(TaskList list, Task task) {
         System.out.println(HORIZONTAL_LINE);
         printTask(list, task, TASK_ADDED_MESSAGE);
     }

@@ -1,12 +1,24 @@
 import cs2103t.duke.exceptions.DukeIllegalArgumentException;
 
+/**
+ * Encapsulates a parser to deal with making sense of the user command.
+ */
 public class Parser {
     private TaskList list;
 
+    /**
+     * Constructs a Parser object
+     * @param list
+     */
     public Parser(TaskList list) {
         this.list = list;
     }
 
+    /**
+     * Parses user's command to instructions for the bot to execute.
+     * @param input
+     * @return Command
+     */
     public Command parseCommand(String input) {
         if (input.isBlank()) {
             throw new DukeIllegalArgumentException("Empty user input is not allowed");

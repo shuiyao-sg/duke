@@ -1,6 +1,13 @@
+/**
+ * Encapsulates a list command to list out all the tasks.
+ */
 public class ListCommand extends Command {
     private static final String LIST_MESSAGE = "Here are the tasks in your list:";
 
+    /**
+     * Constructs a ListCommand object
+     * @param list
+     */
     public ListCommand(TaskList list) {
         super(list);
     }

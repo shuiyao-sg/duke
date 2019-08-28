@@ -9,13 +9,26 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Encapsulates a file I/O class to deal with loading tasks from the file and saving tasks in the file.
+ */
 public class Storage {
     private String filePath;
 
+    /**
+     * Constructs a Storage object
+     * @param filePath
+     */
     public Storage(String filePath) {
         this.filePath = filePath;
     }
 
+    /**
+     * Appends text to the back of a file.
+     * @param input
+     * @throws DukeFileNotFoundException
+     * @throws IOException
+     */
     public void appendText(String input) throws DukeFileNotFoundException, IOException {
         try {
             FileWriter fw = new FileWriter(this.filePath, true);
@@ -26,6 +39,12 @@ public class Storage {
         }
     }
 
+    /**
+     * Replaces chosen text in the file with a new String.
+     * @param oldString
+     * @param newString
+     * @throws IOException
+     */
     public void overwriteText(String oldString, String newString) throws IOException {
         try {
             List<String> inputList = Files.readAllLines(Paths.get(filePath));
@@ -48,6 +67,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Deletes the chosen text from the file.
+     * @param toDelete
+     * @throws IOException
+     */
     public void deleteText(String toDelete) throws IOException {
         try {
             List<String> inputList = Files.readAllLines(Paths.get(filePath));
@@ -67,6 +91,10 @@ public class Storage {
         }
     }
 
+    /**
+     * Generates a TaskList from file input.
+     * @return TaskList with tasks remaining in the file
+     */
     public TaskList genTaskListFromFile() {
         TaskList taskList = new TaskList();
         try {
@@ -83,6 +111,9 @@ public class Storage {
         }
     }
 
+    /**
+     * Prints the file input.
+     */
     public void printFile() {
         try {
             Scanner fileScanner = new Scanner(new File(filePath));

@@ -1,5 +1,8 @@
 import java.io.IOException;
 
+/**
+ * Encapsulates a delete command to delete task from task list.
+ */
 public class DeleteCommand extends Command {
 
     private static final String TASK_DELETED_MESSAGE = "Noted. I've removed this task:";
@@ -7,6 +10,11 @@ public class DeleteCommand extends Command {
     private int index;
     private Storage storage;
 
+    /**
+     * Constructs a DeleteCommand object
+     * @param list
+     * @param index
+     */
     public DeleteCommand(TaskList list, int index) {
         super(list);
         this.index = index;
