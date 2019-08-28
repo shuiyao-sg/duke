@@ -26,6 +26,16 @@ public class TaskList {
         return this.listBody.size();
     }
 
+    public TaskList query(String text) {
+        TaskList taskList = new TaskList();
+        for (Task task : this.listBody) {
+            if (task.toString().contains(text)) {
+                taskList.addTask(task);
+            }
+        }
+        return taskList;
+    }
+
     @Override
     public String toString() {
         String output = "";
