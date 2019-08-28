@@ -23,5 +23,9 @@ public class Event extends Task {
         return new Event(des, at);
     }
 
+    @Override
+    public String toString() {
+        return "[E]" + super.toString() + " at: " + at.toString();
+    }
 
 }
