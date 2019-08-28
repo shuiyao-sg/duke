@@ -11,12 +11,15 @@ public class Parser {
         if (input.isBlank()) {
             throw new DukeIllegalArgumentException("Empty user input is not allowed");
         }
+
         if (input.equals("bye")) {
             return new ByeCommand();
         }
+
         if (input.equals("list")) {
             return new ListCommand(this.list);
         }
+
         String[] inputArray = input.split(" ");
 
         if (inputArray[0].equals("done")) {
@@ -33,6 +36,7 @@ public class Parser {
                         + this.list.size() + " (inclusive)");
             }
         }
+
         if (inputArray[0].equals("delete")) {
             try {
                 int index = Integer.parseInt(inputArray[1]) - 1;
@@ -47,16 +51,28 @@ public class Parser {
                         + list.size() + " (inclusive)");
             }
         }
+
         if (inputArray[0].equals("todo")) {
-            //return Command CommandToDo
+            String des = reformString(inputArray, 1, inputArray.length - 1);
+            return new ToDoCommand(this.list, des);
         }
+
         if (inputArray[0].equals("deadline")) {
-            //return Command CommandDeadline
+            String inpput = reformString(inputArray, 1, inputArray.length - 1);
+            return new DeadlineCommand(this.list, input);
         }
         if (inputArray[0].equals("event")) {
             //return Command CommanEvent
         }
 
         return null;
+    }
+
+    private static String reformString(String[] arr, int start, int end) {
+        String output = "";
+        for (int i = start; i <= end; i++) {
+            output += arr[i] + " ";
+        }
+        return output.trim();
     }
 }

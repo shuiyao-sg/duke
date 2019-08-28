@@ -8,5 +8,10 @@ public class ByeCommand extends Command {
         System.out.println(HORIZONTAL_LINE);
     }
 
+    @Override
+    public boolean isByeCommand() {
+        return true;
+    }
+
 
 }

@@ -19,7 +19,7 @@ public class TextUi {
     private static final String GREET_MESSAGE_FRIST_LINE = "Hello! I'm Duke";
     private static final String GREET_MESSAGE_SECOND_LINE = "What can I do for you?";
     //private static final String BYE_MESSAGE = "Bye. Hope to see you again soon!";
-    private static final String TASK_DONE_MESSAGE = "Nice! I've marked this task as done:";
+    //private static final String TASK_DONE_MESSAGE = "Nice! I've marked this task as done:";
     private static final String TASK_ADDED_MESSAGE = "Got it. I've added this task:";
     //private static final String TASK_DELETED_MESSAGE = "Noted. I've removed this task:";
     //private static final String LIST_MESSAGE = "Here are the tasks in your list:";
@@ -68,10 +68,13 @@ public class TextUi {
 
      */
 
+
     public static void printTaskAdded(TaskList list, Task task) {
         System.out.println(HORIZONTAL_LINE);
         printTask(list, task, TASK_ADDED_MESSAGE);
     }
+
+
 
     /*
     public static void printTaskDeleted(TaskList list, Task task) {
@@ -133,9 +136,13 @@ public class TextUi {
                     Command command = new ByeCommand();
                     command.execute();
                     //TextUi.bye();
-                    sc.close();
+//                    sc.close();
 
-                    break;
+                    if (command.isByeCommand()) {
+                        sc.close();
+                        break;
+                    }
+
                 } else if (input.equals("list")) {
                     Command command = new ListCommand(list);
                     command.execute();
@@ -191,6 +198,9 @@ public class TextUi {
                         }
                     } else if (inputArray[0].equals("todo")) {
                         String des = reformString(inputArray, 1, inputArray.length - 1);
+                        Command command = new ToDoCommand(list, des);
+                        command.execute();
+                        /*
                         Task task = new ToDo(des);
 
                         list.addTask(task);
@@ -198,10 +208,13 @@ public class TextUi {
 
                         // append to file
                         storage.appendText(task.toString());
-
+                        */
 
                     } else if (inputArray[0].equals("deadline")) {
                         String newInput = reformString(inputArray, 1, inputArray.length - 1);
+                        Command command = new DeadlineCommand(list, newInput);
+                        command.execute();
+                        /*
                         Task task = Deadline.genDeadline(newInput);
 
                         list.addTask(task);
@@ -209,10 +222,13 @@ public class TextUi {
 
                         // append to file
                         storage.appendText(task.toString());
-
+                        */
 
                     } else if (inputArray[0].equals("event")) {
                         String newInput = reformString(inputArray, 1, inputArray.length - 1);
+                        Command command = new EventCommand(list, newInput);
+                        command.execute();
+                        /*
                         Task task = Event.genEvent(newInput);
 
                         list.addTask(task);
@@ -220,7 +236,7 @@ public class TextUi {
 
                         // append to file
                         storage.appendText(task.toString());
-
+                        */
 
                     } else {
                         String secondLine = "Permissible command: [list], [done], [todo], [deadline], [event], [bye]";

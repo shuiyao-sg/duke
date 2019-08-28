@@ -31,4 +31,8 @@ public abstract class Command {
         System.out.println(HORIZONTAL_LINE);
         System.out.println();
     }
+
+    public boolean isByeCommand() {
+        return false;
+    }
 }
