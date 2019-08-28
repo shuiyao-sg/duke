@@ -3,7 +3,7 @@ import cs2103t.duke.exceptions.DukeIllegalArgumentException;
 
 public class Event extends Task {
 
-//    protected String at;
+
     protected MyDate at;
     public Event(String description, String at) {
         super(description);
@@ -16,11 +16,11 @@ public class Event extends Task {
         try {
             des = newInputArray[0].trim();
             at = newInputArray[1].trim();
+            return new Event(des, at);
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new DukeIllegalArgumentException("Illegal input for event. "
                     + "Please key in 'event <task> /at <time>'");
         }
-        return new Event(des, at);
     }
 
     @Override
