@@ -58,14 +58,19 @@ public class Parser {
         }
 
         if (inputArray[0].equals("deadline")) {
-            String inpput = reformString(inputArray, 1, inputArray.length - 1);
-            return new DeadlineCommand(this.list, input);
-        }
-        if (inputArray[0].equals("event")) {
-            //return Command CommanEvent
+            String s = reformString(inputArray, 1, inputArray.length - 1);
+            return new DeadlineCommand(this.list, s);
         }
 
-        return null;
+        if (inputArray[0].equals("event")) {
+            String s = reformString(inputArray, 1, inputArray.length - 1);
+            return new EventCommand(this.list, s);
+        }
+
+        String secondLine = "Permissible command: [list], [done], [todo], [deadline], [event], [bye]";
+                       throw new DukeIllegalArgumentException("Illegal user input.\n"
+                               + String.format("%1$" + (secondLine.length() + 5) + "s", secondLine));
+
     }
 
     private static String reformString(String[] arr, int start, int end) {

@@ -20,6 +20,9 @@ public class Event extends Task {
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new DukeIllegalArgumentException("Illegal input for event. "
                     + "Please key in 'event <task> /at <time>'");
+        } catch (NumberFormatException e) {
+            throw new DukeIllegalArgumentException("Illegal input for time. Please key in the format "
+            + "'DD/MM/YYYY'[SPACE]'hhmm-hhmm'");
         }
     }
 

@@ -3,7 +3,6 @@ import cs2103t.duke.exceptions.DukeIllegalArgumentException;
 
 public class Deadline extends Task {
 
-//    protected String by;
     protected MyDate by;
 
     public Deadline(String description, String by) {
@@ -17,11 +16,15 @@ public class Deadline extends Task {
         try {
             des = newInputArray[0].trim();
             by = newInputArray[1].trim();
+            return new Deadline(des, by);
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new DukeIllegalArgumentException("Illegal input for deadline. "
                     + "Please key in 'deadline <task> /by <time>'");
+        } catch (NumberFormatException e) {
+            throw new DukeIllegalArgumentException("Illegal input for time. Please key in the format "
+                    + "'DD/MM/YYYY'[SPACE]'hhmm'");
         }
-        return new Deadline(des, by);
+
     }
 
     @Override
