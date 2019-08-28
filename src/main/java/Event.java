@@ -1,12 +1,13 @@
+import cs2103t.duke.date.MyDate;
 import cs2103t.duke.exceptions.DukeIllegalArgumentException;
 
 public class Event extends Task {
 
-    protected String at;
-
+//    protected String at;
+    protected MyDate at;
     public Event(String description, String at) {
         super(description);
-        this.at = at;
+        this.at = MyDate.genMyDate(at);
     }
 
     public static Event genEvent(String s) {
@@ -22,8 +23,5 @@ public class Event extends Task {
         return new Event(des, at);
     }
 
-    @Override
-    public String toString() {
-        return "[E]" + super.toString() + " at: " + at;
-    }
+
 }
