@@ -28,6 +28,39 @@ public class Task {
         this.isDone = true;
     }
 
+    public static Task genTaskFromFileString(String s) {
+        char taskType = s.charAt(1);
+        String isDone = s.charAt(4) + "";
+
+        int index = s.indexOf("] ");
+        String taskContent = s.substring(index + 1).trim();
+
+        switch (taskType) {
+            case 'T':
+                Task todo = new ToDo(taskContent);
+                if (isDone.equals("\u2713")) {
+                    todo.markAsDone();
+                }
+                return todo;
+            case 'D':
+                String[] deadlineContentArray = taskContent.split("by:");
+                Task deadline = new Deadline(deadlineContentArray[0].trim(), deadlineContentArray[1].trim());
+                if (isDone.equals("\u2713")) {
+                    deadline.markAsDone();
+                }
+                return deadline;
+            case 'E':
+                String[] eventContentArray = taskContent.split("at:");
+                Task event = new Event(eventContentArray[0].trim(), eventContentArray[1].trim());
+                if (isDone.equals("\u2713")) {
+                    event.markAsDone();
+                }
+                return event;
+            default:
+                return null;
+        }
+    }
+
     @Override
     public String toString() {
         return this.getStatusIcon() + " " + this.getDescription();

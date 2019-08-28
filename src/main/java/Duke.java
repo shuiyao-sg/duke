@@ -2,11 +2,7 @@ import cs2103t.duke.exceptions.DukeException;
 import cs2103t.duke.exceptions.DukeIllegalArgumentException;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
 import java.util.Scanner;
 
 public class Duke {
@@ -30,15 +26,22 @@ public class Duke {
 
         //initiate task list
 //        List<Task> list = new ArrayList<>();
-        TaskList list = new TaskList();
+        //TaskList list = new TaskList();
 
         // read input file
         Scanner fileScanner = new Scanner(new File(FILE_PATH));
 
-        System.out.println(HORIZONTAL_LINE);
-        String heading = "File successfully loaded. Remaining tasks: ";
-        System.out.printf("%1$" + (heading.length() + 5) + "s\n", heading);
+        Storage storage = new Storage(FILE_PATH);
 
+        System.out.println(HORIZONTAL_LINE);
+
+        TaskList list = storage.genTaskListFromFile();
+        storage.printFile();
+
+//        String heading = "File successfully loaded. Remaining tasks: ";
+//        System.out.printf("%1$" + (heading.length() + 5) + "s\n", heading);
+
+        /*
         while (fileScanner.hasNextLine()) {
             String nextLineOfFile = fileScanner.nextLine().trim();
             Task task = genTaskFromFile(nextLineOfFile);
@@ -47,6 +50,8 @@ public class Duke {
             //System.out.println(nextLineOfFile);
             System.out.printf("%1$" + (nextLineOfFile.length() + 5) + "s\n", nextLineOfFile);
         }
+
+         */
         System.out.println(HORIZONTAL_LINE);
         System.out.println();
 
@@ -64,7 +69,7 @@ public class Duke {
                 if (input.equals("bye")) {
                     bye();
                     sc.close();
-//                    fw.close();
+
                     break;
                 } else if (input.equals("list")) {
                     printList(list);
@@ -81,22 +86,24 @@ public class Duke {
                             task.markAsDone();
                             printDoneTask(task);
 
+                            storage.overwriteText(initialTaskString, task.toString());
+
                             //modify file
-                            List<String> inputList = Files.readAllLines(Paths.get(FILE_PATH));
-
-                            String output = "";
-
-                            for (String s : inputList) {
-                                if (s.equals(initialTaskString)) {
-                                    output += task.toString() + System.lineSeparator();
-                                } else {
-                                    output += s + System.lineSeparator();
-                                }
-                            }
-
-                            FileWriter fw = new FileWriter(FILE_PATH, false);
-                            fw.write(output);
-                            fw.close();
+//                            List<String> inputList = Files.readAllLines(Paths.get(FILE_PATH));
+//
+//                            String output = "";
+//
+//                            for (String s : inputList) {
+//                                if (s.equals(initialTaskString)) {
+//                                    output += task.toString() + System.lineSeparator();
+//                                } else {
+//                                    output += s + System.lineSeparator();
+//                                }
+//                            }
+//
+//                            FileWriter fw = new FileWriter(FILE_PATH, false);
+//                            fw.write(output);
+//                            fw.close();
 
 
                         } catch (ArrayIndexOutOfBoundsException e) {
@@ -122,19 +129,22 @@ public class Duke {
                             need to add file output
                              */
                             //modify file
-                            List<String> inputList = Files.readAllLines(Paths.get(FILE_PATH));
+                            storage.deleteText(task.toString());
 
-                            String output = "";
 
-                            for (String s : inputList) {
-                                if (!s.equals(task.toString())) {
-                                    output += s + System.lineSeparator();
-                                }
-                            }
-
-                            FileWriter fw = new FileWriter(FILE_PATH, false);
-                            fw.write(output);
-                            fw.close();
+//                            List<String> inputList = Files.readAllLines(Paths.get(FILE_PATH));
+//
+//                            String output = "";
+//
+//                            for (String s : inputList) {
+//                                if (!s.equals(task.toString())) {
+//                                    output += s + System.lineSeparator();
+//                                }
+//                            }
+//
+//                            FileWriter fw = new FileWriter(FILE_PATH, false);
+//                            fw.write(output);
+//                            fw.close();
 
 
                         } catch (ArrayIndexOutOfBoundsException e) {
@@ -154,9 +164,10 @@ public class Duke {
                         printTaskAdded(list, task);
 
                         // append to file
-                        FileWriter fw = new FileWriter(FILE_PATH, true);
-                        fw.write(task.toString() + System.lineSeparator());
-                        fw.close();
+                        storage.appendText(task.toString());
+//                        FileWriter fw = new FileWriter(FILE_PATH, true);
+//                        fw.write(task.toString() + System.lineSeparator());
+//                        fw.close();
 
                     } else if (inputArray[0].equals("deadline")) {
                         String newInput = reformString(inputArray, 1, inputArray.length - 1);
@@ -166,9 +177,10 @@ public class Duke {
                         printTaskAdded(list, task);
 
                         // append to file
-                        FileWriter fw = new FileWriter(FILE_PATH, true);
-                        fw.write(task.toString() + System.lineSeparator());
-                        fw.close();
+                        storage.appendText(task.toString());
+//                        FileWriter fw = new FileWriter(FILE_PATH, true);
+//                        fw.write(task.toString() + System.lineSeparator());
+//                        fw.close();
 
                     } else if (inputArray[0].equals("event")) {
                         String newInput = reformString(inputArray, 1, inputArray.length - 1);
@@ -178,9 +190,10 @@ public class Duke {
                         printTaskAdded(list, task);
 
                         // append to file
-                        FileWriter fw = new FileWriter(FILE_PATH, true);
-                        fw.write(task.toString() + System.lineSeparator());
-                        fw.close();
+                        storage.appendText(task.toString());
+//                        FileWriter fw = new FileWriter(FILE_PATH, true);
+//                        fw.write(task.toString() + System.lineSeparator());
+//                        fw.close();
 
                     } else {
                         String secondLine = "Permissible command: [list], [done], [todo], [deadline], [event], [bye]";
@@ -286,6 +299,7 @@ public class Duke {
         return output.trim();
     }
 
+    /*
     private static Task genTaskFromFile(String s) {
         char taskType = s.charAt(1);
         String isDone = s.charAt(4) + "";
@@ -318,4 +332,6 @@ public class Duke {
                 return null;
         }
     }
+
+     */
 }

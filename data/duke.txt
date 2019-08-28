@@ -1,4 +1,6 @@
 [D][✓] return book 1 by: 1 FEBRUARY 2019 21:00
-[E][✘] project meeting at: 1 JUNE 2019 13:00 to 15:30
+[E][✓] project meeting at: 1 JUNE 2019 13:00 to 15:30
 [T][✘] read book 1
-[D][✓] return book 1 by: 2 AUGUST 2019
+[T][✘] read book 5
+[D][✘] return book 5 by: 3 SEPTEMBER 2019
+[E][✘] project meeting at: 4 SEPTEMBER 2019
