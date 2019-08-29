@@ -1,5 +1,8 @@
 import java.io.IOException;
 
+/**
+ * Represents command to be executed by Duke
+ */
 public abstract class Command {
     protected static final int TEXT_INDENT_LEVEL = 5;
     protected static final String INDENT_BY_FOUR = " " + " " + " " + " ";
@@ -10,12 +13,20 @@ public abstract class Command {
     protected TaskList list;
     protected Task task;
 
+    /**
+     * Constructs a Command object
+     * @param taskList
+     */
     public Command(TaskList taskList) {
         this.list = taskList;
     }
 
     public Command() {}
 
+    /**
+     * Executes the command. Returns void.
+     * @throws IOException
+     */
     public abstract void execute() throws IOException;
 
     protected static String indentText(String input, int indentLevel) {
@@ -32,6 +43,10 @@ public abstract class Command {
         System.out.println();
     }
 
+    /**
+     * Checks whether the Command is a ByeCommand.
+     * @return true if it is a ByeCommand, false otherwise
+     */
     public boolean isByeCommand() {
         return false;
     }

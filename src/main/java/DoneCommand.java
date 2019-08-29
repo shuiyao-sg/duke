@@ -1,11 +1,19 @@
 import java.io.IOException;
 
+/**
+ * Encapsulates a done command to indicate that a task is done.
+ */
 public class DoneCommand extends Command {
     private static final String TASK_DONE_MESSAGE = "Nice! I've marked this task as done:";
 
     private int index;
     private Storage storage;
 
+    /**
+     * Constructs a DoneCommand object
+     * @param list
+     * @param index
+     */
     public DoneCommand(TaskList list, int index) {
         super(list);
         this.index = index;

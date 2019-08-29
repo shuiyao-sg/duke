@@ -1,11 +1,19 @@
 import java.io.IOException;
 
+/**
+ * Encapsulates a ToDo command to create a ToDo task.
+ */
 public class ToDoCommand extends Command {
 
     private static final String TASK_ADDED_MESSAGE = "Got it. I've added this task:";
 
     private Storage storage;
 
+    /**
+     * Constructs a ToDoCommand object
+     * @param list
+     * @param des
+     */
     public ToDoCommand(TaskList list, String des) {
         super(list);
         super.task = new ToDo(des);
@@ -19,7 +27,7 @@ public class ToDoCommand extends Command {
         printTaskAdded(super.list, super.task);
     }
 
-    public static void printTaskAdded(TaskList list, Task task) {
+    private static void printTaskAdded(TaskList list, Task task) {
         System.out.println(HORIZONTAL_LINE);
         printTask(list, task, TASK_ADDED_MESSAGE);
     }

@@ -1,15 +1,28 @@
 import cs2103t.duke.date.MyDate;
 import cs2103t.duke.exceptions.DukeIllegalArgumentException;
 
+/**
+ * Encapsulates an Event task.
+ */
 public class Event extends Task {
 
-
     protected MyDate at;
+
+    /**
+     * Constructs an Event object
+     * @param description
+     * @param at
+     */
     public Event(String description, String at) {
         super(description);
         this.at = MyDate.genMyDate(at);
     }
 
+    /**
+     * Generates an Event task from input String.
+     * @param s
+     * @return Event task
+     */
     public static Event genEvent(String s) {
         String[] newInputArray = s.split("/at");
         String des, at;
