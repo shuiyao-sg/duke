@@ -5,10 +5,11 @@ public class ToDo extends Task {
 
     /**
      * Constructs a ToDo object.
-     * @param descprition
+     *
+     * @param description task description.
      */
-    public ToDo(String descprition) {
-        super(descprition);
+    public ToDo(String description) {
+        super(description);
     }
 
     @Override

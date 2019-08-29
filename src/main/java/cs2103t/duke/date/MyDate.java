@@ -34,8 +34,9 @@ public class MyDate {
 
     /**
      * Generates a MyDate object with a date String.
-     * @param date
-     * @return date specified by the String
+     *
+     * @param date String representation of date.
+     * @return MyDate object specified by the String.
      */
     public static MyDate genMyDate(String date) {
         String[] tempArray = date.split(" ");
@@ -89,13 +90,13 @@ public class MyDate {
     @Override
     public String toString() {
         return toHour < 0
-                    ? fromHour < 0
-                        ? day + " " + month.toString() + " " + year
-                        : day + " " + month.toString() + " " + year + " " + String.format("%02d", fromHour) + ":"
-                            + String.format("%-2s", fromMin).replace(' ', '0')
-                    : day + " " + month.toString() + " " + year + " " + String.format("%02d", fromHour) + ":"
-                            + String.format("%-2s", fromMin).replace(' ', '0') + " to "
-                            + String.format("%02d", toHour) + ":" + String.format("%-2s", toMin).replace(' ', '0');
+                ? fromHour < 0
+                ? day + " " + month.toString() + " " + year
+                : day + " " + month.toString() + " " + year + " " + String.format("%02d", fromHour) + ":"
+                + String.format("%-2s", fromMin).replace(' ', '0')
+                : day + " " + month.toString() + " " + year + " " + String.format("%02d", fromHour) + ":"
+                + String.format("%-2s", fromMin).replace(' ', '0') + " to "
+                + String.format("%02d", toHour) + ":" + String.format("%-2s", toMin).replace(' ', '0');
     }
 
 }

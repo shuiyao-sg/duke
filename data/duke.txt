@@ -6,3 +6,4 @@
 [E][✓] code at: 1 SEPTEMBER 2019 10:00 to 20:00
 [T][✘] read book
 [T][✘] read book 1
+[T][✘] read book 2

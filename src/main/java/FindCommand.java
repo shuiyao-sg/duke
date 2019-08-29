@@ -1,8 +1,17 @@
+/**
+ * Encapsulates a find command to search for a keyword.
+ */
 public class FindCommand extends Command {
     private static final String FIND_MESSAGE = "Here are the matching tasks in your list:";
 
     private String text;
 
+    /**
+     * Constructs a FindCommand object.
+     *
+     * @param list input task list.
+     * @param text text to find specified by user input.
+     */
     public FindCommand(TaskList list, String text) {
         super(list);
         this.text = text;

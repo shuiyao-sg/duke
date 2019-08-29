@@ -10,8 +10,9 @@ public class Task {
 
     /**
      * Constructs a Task object.
-     * @param description
-     * @throws DukeIllegalArgumentException
+     *
+     * @param description task description.
+     * @throws DukeIllegalArgumentException if encountered invalid user input.
      */
     public Task(String description) throws DukeIllegalArgumentException {
         if (description.isBlank()) {
@@ -41,8 +42,9 @@ public class Task {
 
     /**
      * Converts String in file to Task.
-     * @param s
-     * @return Task specified by the String
+     *
+     * @param s String representation of tasks in file.
+     * @return Task specified by the String.
      */
     public static Task genTaskFromFileString(String s) {
         char taskType = s.charAt(1);

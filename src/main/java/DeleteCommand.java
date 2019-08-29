@@ -12,8 +12,9 @@ public class DeleteCommand extends Command {
 
     /**
      * Constructs a DeleteCommand object
-     * @param list
-     * @param index
+     *
+     * @param list  input task list.
+     * @param index index from user input.
      */
     public DeleteCommand(TaskList list, int index) {
         super(list);

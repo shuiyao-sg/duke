@@ -5,7 +5,8 @@ public class Duke {
 
     /**
      * Starts the program.
-     * @param args
+     *
+     * @param args arguments passed in.
      */
     public static void main(String[] args) {
         TextUi ui = new TextUi();

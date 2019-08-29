@@ -10,8 +10,9 @@ public class EventCommand extends Command {
 
     /**
      * Constructs an EventCommand object.
-     * @param list
-     * @param input
+     *
+     * @param list  input task list.
+     * @param input command from user input.
      */
     public EventCommand(TaskList list, String input) {
         super(list);

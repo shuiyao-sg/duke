@@ -7,7 +7,8 @@ public class RedundantOperationException extends DukeException {
 
     /**
      * Constructs a RedundantOperationException object
-     * @param message
+     *
+     * @param message exception message.
      */
     public RedundantOperationException(String message) {
         super(message);

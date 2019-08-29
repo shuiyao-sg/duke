@@ -18,13 +18,13 @@ public class TextUi {
             + "|____/ \\__,_|_|\\_\\___|\n";
 
     private static final String FILE_PATH = "F:/CS2103T/Duke/data/duke.txt";
-    private static final String GREET_MESSAGE_FRIST_LINE = "Hello! I'm Duke";
+    private static final String GREET_MESSAGE_FIRST_LINE = "Hello! I'm Duke";
     private static final String GREET_MESSAGE_SECOND_LINE = "What can I do for you?";
 
     private static void greet() {
         System.out.println("Hello from\n" + LOGO);
         System.out.println(HORIZONTAL_LINE);
-        System.out.print(indentText(GREET_MESSAGE_FRIST_LINE, TEXT_INDENT_LEVEL));
+        System.out.print(indentText(GREET_MESSAGE_FIRST_LINE, TEXT_INDENT_LEVEL));
         System.out.print(indentText(GREET_MESSAGE_SECOND_LINE, TEXT_INDENT_LEVEL));
         System.out.println(HORIZONTAL_LINE);
         System.out.println();

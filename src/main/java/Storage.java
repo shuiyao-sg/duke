@@ -17,7 +17,8 @@ public class Storage {
 
     /**
      * Constructs a Storage object
-     * @param filePath
+     *
+     * @param filePath file path.
      */
     public Storage(String filePath) {
         this.filePath = filePath;
@@ -25,9 +26,10 @@ public class Storage {
 
     /**
      * Appends text to the back of a file.
-     * @param input
-     * @throws DukeFileNotFoundException
-     * @throws IOException
+     *
+     * @param input text to append.
+     * @throws DukeFileNotFoundException if file not found.
+     * @throws IOException               if failed to read or write to file.
      */
     public void appendText(String input) throws DukeFileNotFoundException, IOException {
         try {
@@ -41,9 +43,10 @@ public class Storage {
 
     /**
      * Replaces chosen text in the file with a new String.
-     * @param oldString
-     * @param newString
-     * @throws IOException
+     *
+     * @param oldString text to be overwritten.
+     * @param newString new text.
+     * @throws IOException if failed to read or write to file.
      */
     public void overwriteText(String oldString, String newString) throws IOException {
         try {
@@ -69,8 +72,9 @@ public class Storage {
 
     /**
      * Deletes the chosen text from the file.
-     * @param toDelete
-     * @throws IOException
+     *
+     * @param toDelete text to delete.
+     * @throws IOException if failed to read or write to file.
      */
     public void deleteText(String toDelete) throws IOException {
         try {
@@ -93,7 +97,8 @@ public class Storage {
 
     /**
      * Generates a TaskList from file input.
-     * @return TaskList with tasks remaining in the file
+     *
+     * @return TaskList with tasks remaining in the file.
      */
     public TaskList genTaskListFromFile() {
         TaskList taskList = new TaskList();

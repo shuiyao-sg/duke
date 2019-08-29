@@ -10,8 +10,9 @@ public class Deadline extends Task {
 
     /**
      * Constructs a Deadline object
-     * @param description
-     * @param by
+     *
+     * @param description task description.
+     * @param by          deadline date.
      */
     public Deadline(String description, String by) {
         super(description);
@@ -20,8 +21,9 @@ public class Deadline extends Task {
 
     /**
      * Generates a Deadline task from input String.
-     * @param s
-     * @return Deadline task
+     *
+     * @param s deadline date and time represented by String.
+     * @return Deadline task.
      */
     public static Deadline genDeadline(String s) {
         String[] newInputArray = s.split("/by");

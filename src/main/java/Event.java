@@ -10,8 +10,9 @@ public class Event extends Task {
 
     /**
      * Constructs an Event object
-     * @param description
-     * @param at
+     *
+     * @param description task description.
+     * @param at          event date and time represented by String.
      */
     public Event(String description, String at) {
         super(description);
@@ -20,8 +21,9 @@ public class Event extends Task {
 
     /**
      * Generates an Event task from input String.
-     * @param s
-     * @return Event task
+     *
+     * @param s String representation of event.
+     * @return Event task.
      */
     public static Event genEvent(String s) {
         String[] newInputArray = s.split("/at");

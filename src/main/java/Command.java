@@ -15,7 +15,8 @@ public abstract class Command {
 
     /**
      * Constructs a Command object
-     * @param taskList
+     *
+     * @param taskList input task list.
      */
     public Command(TaskList taskList) {
         this.list = taskList;
@@ -26,6 +27,7 @@ public abstract class Command {
 
     /**
      * Executes the command. Returns void.
+     *
      * @throws IOException
      */
     public abstract void execute() throws IOException;
@@ -46,6 +48,7 @@ public abstract class Command {
 
     /**
      * Checks whether the Command is a ByeCommand.
+     *
      * @return true if it is a ByeCommand, false otherwise
      */
     public boolean isByeCommand() {

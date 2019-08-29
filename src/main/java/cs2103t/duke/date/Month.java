@@ -25,8 +25,9 @@ public enum Month {
 
     /**
      * Parses int to corresponding Month object.
-     * @param i
-     * @return Month object
+     *
+     * @param i integer representation of month.
+     * @return Month object.
      */
     public static Month parseFromInt(int i) {
         switch (i) {

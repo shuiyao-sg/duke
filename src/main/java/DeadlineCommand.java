@@ -10,8 +10,9 @@ public class DeadlineCommand extends Command {
 
     /**
      * Constructs a DeadlineCommand object
-     * @param list
-     * @param input
+     *
+     * @param list  input task list.
+     * @param input task description and date specified by user input.
      */
     public DeadlineCommand(TaskList list, String input) {
         super(list);

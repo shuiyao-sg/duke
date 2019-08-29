@@ -11,8 +11,9 @@ public class DoneCommand extends Command {
 
     /**
      * Constructs a DoneCommand object
-     * @param list
-     * @param index
+     *
+     * @param list  input task list.
+     * @param index index from user input.
      */
     public DoneCommand(TaskList list, int index) {
         super(list);

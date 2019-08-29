@@ -11,8 +11,9 @@ public class ToDoCommand extends Command {
 
     /**
      * Constructs a ToDoCommand object
-     * @param list
-     * @param des
+     *
+     * @param list task list.
+     * @param des  task description.
      */
     public ToDoCommand(TaskList list, String des) {
         super(list);

@@ -10,7 +10,7 @@ public class TaskList {
     private List<Task> listBody;
 
     /**
-     * Constructs a TaskList object
+     * Constructs a TaskList object.
      */
     public TaskList() {
         this.listBody = new ArrayList<>();
@@ -18,7 +18,8 @@ public class TaskList {
 
     /**
      * Adds task to the TaskList.
-     * @param task
+     *
+     * @param task task to be added to task list.
      */
     public void addTask(Task task) {
         this.listBody.add(task);
@@ -26,7 +27,8 @@ public class TaskList {
 
     /**
      * Deletes task from the TaskList.
-     * @param index
+     *
+     * @param index index from user input.
      */
     public void deleteTask(int index) {
         this.listBody.remove(index);
@@ -34,8 +36,9 @@ public class TaskList {
 
     /**
      * Retrieves task from the TaskList.
-     * @param index
-     * @return task to find
+     *
+     * @param index index from user input.
+     * @return task to find.
      */
     public Task getTask(int index) {
         return this.listBody.get(index);
@@ -43,6 +46,7 @@ public class TaskList {
 
     /**
      * Returns size of the task list.
+     *
      * @return size of the task list.
      */
     public int size() {
