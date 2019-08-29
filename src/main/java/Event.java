@@ -3,8 +3,8 @@ import cs2103t.duke.exceptions.DukeIllegalArgumentException;
 
 public class Event extends Task {
 
-
     protected MyDate at;
+    
     public Event(String description, String at) {
         super(description);
         this.at = MyDate.genMyDate(at);
@@ -22,7 +22,7 @@ public class Event extends Task {
                     + "Please key in 'event <task> /at <time>'");
         } catch (NumberFormatException e) {
             throw new DukeIllegalArgumentException("Illegal input for time. Please key in the format "
-            + "'DD/MM/YYYY'[SPACE]'hhmm-hhmm'");
+                    + "'DD/MM/YYYY'[SPACE]'hhmm-hhmm'");
         }
     }
 
@@ -30,5 +30,4 @@ public class Event extends Task {
     public String toString() {
         return "[E]" + super.toString() + " at: " + at.toString();
     }
-
 }

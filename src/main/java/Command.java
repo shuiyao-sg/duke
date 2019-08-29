@@ -14,7 +14,8 @@ public abstract class Command {
         this.list = taskList;
     }
 
-    public Command() {}
+    public Command() {
+    }
 
     public abstract void execute() throws IOException;
 

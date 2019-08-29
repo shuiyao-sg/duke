@@ -23,5 +23,4 @@ public class ToDoCommand extends Command {
         System.out.println(HORIZONTAL_LINE);
         printTask(list, task, TASK_ADDED_MESSAGE);
     }
-
 }
