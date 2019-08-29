@@ -21,7 +21,8 @@ public abstract class Command {
         this.list = taskList;
     }
 
-    public Command() {}
+    public Command() {
+    }
 
     /**
      * Executes the command. Returns void.

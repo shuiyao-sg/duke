@@ -8,7 +8,7 @@ public class Duke {
      * @param args
      */
     public static void main(String[] args) {
-            TextUi ui = new TextUi();
-            ui.run();
+        TextUi ui = new TextUi();
+        ui.run();
     }
 }

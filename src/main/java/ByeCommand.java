@@ -15,6 +15,4 @@ public class ByeCommand extends Command {
     public boolean isByeCommand() {
         return true;
     }
-
-
 }

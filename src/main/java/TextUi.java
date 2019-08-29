@@ -38,11 +38,9 @@ public class TextUi {
      * Starts the text UI.
      */
     public void run() {
-
         TextUi.greet();
 
         Storage storage = new Storage(FILE_PATH);
-
         System.out.println(HORIZONTAL_LINE);
 
         TaskList list = storage.genTaskListFromFile();
@@ -67,7 +65,7 @@ public class TextUi {
                 }
             } catch (DukeException | IOException e) {
                 System.out.println(e.getMessage());
-           }
+            }
         }
     }
 }

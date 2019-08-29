@@ -4,6 +4,7 @@ package cs2103t.duke.exceptions;
  * Represents FileNotFoundException for Duke
  */
 public class DukeFileNotFoundException extends DukeException {
+
     /**
      * Constructs a DukeFileNotFoundException object
      * @param message
