@@ -79,6 +79,11 @@ public class Parser {
             return new EventCommand(this.list, s);
         }
 
+        if (inputArray[0].equals("find")) {
+            String s = reformString(inputArray, 1, inputArray.length - 1);
+            return new FindCommand(this.list, s);
+        }
+
         String secondLine = "Permissible command: [list], [done], [todo], [deadline], [event], [bye]";
         throw new DukeIllegalArgumentException("Illegal user input.\n"
                 + String.format("%1$" + (secondLine.length() + 5) + "s", secondLine));
