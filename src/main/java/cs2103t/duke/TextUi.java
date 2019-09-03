@@ -1,3 +1,6 @@
+package cs2103t.duke;
+
+import cs2103t.duke.command.Command;
 import cs2103t.duke.exceptions.DukeException;
 
 import java.io.IOException;
@@ -17,8 +20,8 @@ public class TextUi {
             + "| |_| | |_| |   <  __/\n"
             + "|____/ \\__,_|_|\\_\\___|\n";
 
-    private static final String FILE_PATH = "F:/CS2103T/Duke/data/duke.txt";
-    private static final String GREET_MESSAGE_FIRST_LINE = "Hello! I'm Duke";
+    private static final String FILE_PATH = "F:/CS2103T/cs2103t.duke.Duke/data/duke.txt";
+    private static final String GREET_MESSAGE_FIRST_LINE = "Hello! I'm cs2103t.duke.Duke";
     private static final String GREET_MESSAGE_SECOND_LINE = "What can I do for you?";
 
     private static void greet() {

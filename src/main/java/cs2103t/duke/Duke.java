@@ -1,3 +1,5 @@
+package cs2103t.duke;
+
 /**
  * Represents a Personal Assistant Chatbot that helps a person to keep track of various things.
  */

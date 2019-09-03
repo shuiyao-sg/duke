@@ -1,3 +1,5 @@
+package cs2103t.duke;
+
 import cs2103t.duke.exceptions.DukeFileNotFoundException;
 
 import java.io.File;
@@ -16,7 +18,7 @@ public class Storage {
     private String filePath;
 
     /**
-     * Constructs a Storage object
+     * Constructs a cs2103t.duke.Storage object
      *
      * @param filePath file path.
      */
@@ -33,11 +35,11 @@ public class Storage {
      */
     public void appendText(String input) throws DukeFileNotFoundException, IOException {
         try {
-            FileWriter fw = new FileWriter(this.filePath, true);
+            FileWriter fw = new FileWriter(this.filePath, true); // if file not found, need to create new file
             fw.write(input + System.lineSeparator());
             fw.close();
         } catch (FileNotFoundException e) {
-            throw new DukeFileNotFoundException("File " + filePath + " not found by Duke");
+            throw new DukeFileNotFoundException("File " + filePath + " not found by cs2103t.duke.Duke");
         }
     }
 
@@ -66,7 +68,7 @@ public class Storage {
             fw.write(output);
             fw.close();
         } catch (FileNotFoundException e) {
-            throw new DukeFileNotFoundException("File " + filePath + " not found by Duke");
+            throw new DukeFileNotFoundException("File " + filePath + " not found by cs2103t.duke.Duke");
         }
     }
 
@@ -91,14 +93,14 @@ public class Storage {
             fw.write(output);
             fw.close();
         } catch (FileNotFoundException e) {
-            throw new DukeFileNotFoundException("File " + filePath + " not found by Duke");
+            throw new DukeFileNotFoundException("File " + filePath + " not found by cs2103t.duke.Duke");
         }
     }
 
     /**
-     * Generates a TaskList from file input.
+     * Generates a cs2103t.duke.TaskList from file input.
      *
-     * @return TaskList with tasks remaining in the file.
+     * @return cs2103t.duke.TaskList with tasks remaining in the file.
      */
     public TaskList genTaskListFromFile() {
         TaskList taskList = new TaskList();
@@ -111,7 +113,7 @@ public class Storage {
             }
             return taskList;
         } catch (FileNotFoundException e) {
-            System.err.println("File " + filePath + " not found by Duke. New task list generated");
+            System.out.println("File " + filePath + " not found by Duke. New task list generated");
             return new TaskList();
         }
     }
@@ -130,7 +132,7 @@ public class Storage {
                 System.out.printf("%1$" + (nextLineOfFile.length() + 5) + "s\n", nextLineOfFile);
             }
         } catch (FileNotFoundException e) {
-            throw new DukeFileNotFoundException("FIle " + filePath + " not found by Duke");
+            return;
         }
     }
 }

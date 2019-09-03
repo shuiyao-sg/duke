@@ -1,3 +1,9 @@
+package cs2103t.duke.command;
+
+import cs2103t.duke.Storage;
+import cs2103t.duke.Task;
+import cs2103t.duke.TaskList;
+
 import java.io.IOException;
 
 /**
@@ -10,7 +16,7 @@ public class DoneCommand extends Command {
     private Storage storage;
 
     /**
-     * Constructs a DoneCommand object
+     * Constructs a cs2103t.duke.command.DoneCommand object
      *
      * @param list  input task list.
      * @param index index from user input.

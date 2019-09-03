@@ -1,3 +1,7 @@
+package cs2103t.duke.command;
+
+import cs2103t.duke.TaskList;
+
 /**
  * Encapsulates a list command to list out all the tasks.
  */
@@ -5,7 +9,7 @@ public class ListCommand extends Command {
     private static final String LIST_MESSAGE = "Here are the tasks in your list:";
 
     /**
-     * Constructs a ListCommand object.
+     * Constructs a cs2103t.duke.command.ListCommand object.
      *
      * @param list input task list.
      */

@@ -1,7 +1,7 @@
 package cs2103t.duke.exceptions;
 
 /**
- * Represents ArrayIndexOutOfBoundsException for Duke
+ * Represents ArrayIndexOutOfBoundsException for cs2103t.duke.Duke
  */
 public class DukeArrayIndexOutOfBoundsException extends DukeException {
 

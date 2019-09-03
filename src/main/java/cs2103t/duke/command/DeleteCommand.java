@@ -1,3 +1,9 @@
+package cs2103t.duke.command;
+
+import cs2103t.duke.Storage;
+import cs2103t.duke.Task;
+import cs2103t.duke.TaskList;
+
 import java.io.IOException;
 
 /**
@@ -11,7 +17,7 @@ public class DeleteCommand extends Command {
     private Storage storage;
 
     /**
-     * Constructs a DeleteCommand object
+     * Constructs a cs2103t.duke.command.DeleteCommand object
      *
      * @param list  input task list.
      * @param index index from user input.

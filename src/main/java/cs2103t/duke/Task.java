@@ -1,3 +1,5 @@
+package cs2103t.duke;
+
 import cs2103t.duke.exceptions.DukeIllegalArgumentException;
 import cs2103t.duke.exceptions.RedundantOperationException;
 
@@ -9,7 +11,7 @@ public class Task {
     protected boolean isDone;
 
     /**
-     * Constructs a Task object.
+     * Constructs a cs2103t.duke.Task object.
      *
      * @param description task description.
      * @throws DukeIllegalArgumentException if encountered invalid user input.
@@ -41,10 +43,10 @@ public class Task {
     }
 
     /**
-     * Converts String in file to Task.
+     * Converts String in file to cs2103t.duke.Task.
      *
      * @param s String representation of tasks in file.
-     * @return Task specified by the String.
+     * @return cs2103t.duke.Task specified by the String.
      */
     public static Task genTaskFromFileString(String s) {
         char taskType = s.charAt(1);

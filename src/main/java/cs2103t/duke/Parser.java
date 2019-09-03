@@ -1,3 +1,6 @@
+package cs2103t.duke;
+
+import cs2103t.duke.command.*;
 import cs2103t.duke.exceptions.DukeIllegalArgumentException;
 
 /**
@@ -7,7 +10,7 @@ public class Parser {
     private TaskList list;
 
     /**
-     * Constructs a Parser object
+     * Constructs a cs2103t.duke.Parser object
      *
      * @param list
      */
@@ -19,7 +22,7 @@ public class Parser {
      * Parses user's command to instructions for the bot to execute.
      *
      * @param input command from user input.
-     * @return Command command to be executed.
+     * @return cs2103t.duke.command.Command command to be executed.
      */
     public Command parseCommand(String input) {
         if (input.isBlank()) {

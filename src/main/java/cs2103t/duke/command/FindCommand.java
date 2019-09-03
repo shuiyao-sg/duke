@@ -1,3 +1,7 @@
+package cs2103t.duke.command;
+
+import cs2103t.duke.TaskList;
+
 /**
  * Encapsulates a find command to search for a keyword.
  */
@@ -7,7 +11,7 @@ public class FindCommand extends Command {
     private String text;
 
     /**
-     * Constructs a FindCommand object.
+     * Constructs a cs2103t.duke.command.FindCommand object.
      *
      * @param list input task list.
      * @param text text to find specified by user input.
