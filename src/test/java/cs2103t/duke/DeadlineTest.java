@@ -1,3 +1,5 @@
+package cs2103t.duke;
+
 import cs2103t.duke.Deadline;
 import cs2103t.duke.exceptions.DukeIllegalArgumentException;
 import org.junit.jupiter.api.Test;

@@ -14,3 +14,17 @@ application {
     // Change this to your main class.
     mainClassName = "cs2103t.duke.Duke"
 }
+
+run {
+    standardInput = System.in
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.5.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
