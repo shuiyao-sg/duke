@@ -1,15 +1,17 @@
+package cs2103t.duke;
+
 import cs2103t.duke.date.MyDate;
 import cs2103t.duke.exceptions.DukeIllegalArgumentException;
 
 /**
- * Encapsulates an Event task.
+ * Encapsulates an cs2103t.duke.Event task.
  */
 public class Event extends Task {
 
     protected MyDate at;
 
     /**
-     * Constructs an Event object
+     * Constructs an cs2103t.duke.Event object
      *
      * @param description task description.
      * @param at          event date and time represented by String.
@@ -20,10 +22,10 @@ public class Event extends Task {
     }
 
     /**
-     * Generates an Event task from input String.
+     * Generates an cs2103t.duke.Event task from input String.
      *
      * @param s String representation of event.
-     * @return Event task.
+     * @return cs2103t.duke.Event task.
      */
     public static Event genEvent(String s) {
         String[] newInputArray = s.split("/at");

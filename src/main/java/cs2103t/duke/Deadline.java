@@ -1,3 +1,5 @@
+package cs2103t.duke;
+
 import cs2103t.duke.date.MyDate;
 import cs2103t.duke.exceptions.DukeIllegalArgumentException;
 
@@ -9,7 +11,7 @@ public class Deadline extends Task {
     protected MyDate by;
 
     /**
-     * Constructs a Deadline object
+     * Constructs a cs2103t.duke.Deadline object
      *
      * @param description task description.
      * @param by          deadline date.
@@ -20,10 +22,10 @@ public class Deadline extends Task {
     }
 
     /**
-     * Generates a Deadline task from input String.
+     * Generates a cs2103t.duke.Deadline task from input String.
      *
      * @param s deadline date and time represented by String.
-     * @return Deadline task.
+     * @return cs2103t.duke.Deadline task.
      */
     public static Deadline genDeadline(String s) {
         String[] newInputArray = s.split("/by");

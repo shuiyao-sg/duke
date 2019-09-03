@@ -1,3 +1,10 @@
+package cs2103t.duke.command;
+
+import cs2103t.duke.Deadline;
+import cs2103t.duke.Storage;
+import cs2103t.duke.Task;
+import cs2103t.duke.TaskList;
+
 import java.io.IOException;
 
 /**
@@ -9,7 +16,7 @@ public class DeadlineCommand extends Command {
     private Storage storage;
 
     /**
-     * Constructs a DeadlineCommand object
+     * Constructs a cs2103t.duke.command.DeadlineCommand object
      *
      * @param list  input task list.
      * @param input task description and date specified by user input.

@@ -1,3 +1,5 @@
+package cs2103t.duke.command;
+
 /**
  * Encapsulates a bye command for exiting the program.
  */

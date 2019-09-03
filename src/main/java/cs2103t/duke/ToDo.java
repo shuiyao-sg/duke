@@ -1,10 +1,12 @@
+package cs2103t.duke;
+
 /**
- * Encapsulates a ToDo task.
+ * Encapsulates a cs2103t.duke.ToDo task.
  */
 public class ToDo extends Task {
 
     /**
-     * Constructs a ToDo object.
+     * Constructs a cs2103t.duke.ToDo object.
      *
      * @param description task description.
      */

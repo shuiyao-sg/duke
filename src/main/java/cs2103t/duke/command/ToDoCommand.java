@@ -1,22 +1,30 @@
+package cs2103t.duke.command;
+
+import cs2103t.duke.Storage;
+import cs2103t.duke.Task;
+import cs2103t.duke.TaskList;
+import cs2103t.duke.ToDo;
+
 import java.io.IOException;
 
 /**
- * Encapsulates an event command to create an event task.
+ * Encapsulates a cs2103t.duke.ToDo command to create a cs2103t.duke.ToDo task.
  */
-public class EventCommand extends Command {
+public class ToDoCommand extends Command {
+
     private static final String TASK_ADDED_MESSAGE = "Got it. I've added this task:";
 
     private Storage storage;
 
     /**
-     * Constructs an EventCommand object.
+     * Constructs a cs2103t.duke.command.ToDoCommand object
      *
-     * @param list  input task list.
-     * @param input command from user input.
+     * @param list task list.
+     * @param des  task description.
      */
-    public EventCommand(TaskList list, String input) {
+    public ToDoCommand(TaskList list, String des) {
         super(list);
-        super.task = Event.genEvent(input);
+        super.task = new ToDo(des);
         this.storage = new Storage(FILE_PATH);
     }
 

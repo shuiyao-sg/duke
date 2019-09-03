@@ -1,20 +1,25 @@
+package cs2103t.duke.command;
+
+import cs2103t.duke.Task;
+import cs2103t.duke.TaskList;
+
 import java.io.IOException;
 
 /**
- * Represents command to be executed by Duke
+ * Represents command to be executed by cs2103t.duke.Duke
  */
 public abstract class Command {
     protected static final int TEXT_INDENT_LEVEL = 5;
     protected static final String INDENT_BY_FOUR = " " + " " + " " + " ";
     protected static final String HORIZONTAL_LINE = INDENT_BY_FOUR
             + "____________________________________________________________";
-    protected static final String FILE_PATH = "F:/CS2103T/Duke/data/duke.txt";
+    protected static final String FILE_PATH = "F:/CS2103T/cs2103t.duke.Duke/data/duke.txt";
 
     protected TaskList list;
     protected Task task;
 
     /**
-     * Constructs a Command object
+     * Constructs a cs2103t.duke.command.Command object
      *
      * @param taskList input task list.
      */
@@ -47,9 +52,9 @@ public abstract class Command {
     }
 
     /**
-     * Checks whether the Command is a ByeCommand.
+     * Checks whether the cs2103t.duke.command.Command is a cs2103t.duke.command.ByeCommand.
      *
-     * @return true if it is a ByeCommand, false otherwise
+     * @return true if it is a cs2103t.duke.command.ByeCommand, false otherwise
      */
     public boolean isByeCommand() {
         return false;

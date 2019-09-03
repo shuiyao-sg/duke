@@ -1,3 +1,5 @@
+package cs2103t.duke;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,14 +12,14 @@ public class TaskList {
     private List<Task> listBody;
 
     /**
-     * Constructs a TaskList object.
+     * Constructs a cs2103t.duke.TaskList object.
      */
     public TaskList() {
         this.listBody = new ArrayList<>();
     }
 
     /**
-     * Adds task to the TaskList.
+     * Adds task to the cs2103t.duke.TaskList.
      *
      * @param task task to be added to task list.
      */
@@ -26,7 +28,7 @@ public class TaskList {
     }
 
     /**
-     * Deletes task from the TaskList.
+     * Deletes task from the cs2103t.duke.TaskList.
      *
      * @param index index from user input.
      */
@@ -35,7 +37,7 @@ public class TaskList {
     }
 
     /**
-     * Retrieves task from the TaskList.
+     * Retrieves task from the cs2103t.duke.TaskList.
      *
      * @param index index from user input.
      * @return task to find.
