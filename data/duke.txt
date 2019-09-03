@@ -2,3 +2,4 @@
 [E][✘] project meeting at: 1 FEBRUARY 2019 14:00 to 15:00
 [T][?] read book 2
 [D][?] return book 2 by: 3 MAY 2019
+[T][?] read book 3
