@@ -13,7 +13,7 @@ public abstract class Command {
     protected static final String INDENT_BY_FOUR = " " + " " + " " + " ";
     protected static final String HORIZONTAL_LINE = INDENT_BY_FOUR
             + "____________________________________________________________";
-    protected static final String FILE_PATH = "F:/CS2103T/cs2103t.duke.Duke/data/duke.txt";
+    protected static final String FILE_PATH = "F:/CS2103T/Duke/data/duke.txt";
 
     protected TaskList list;
     protected Task task;
