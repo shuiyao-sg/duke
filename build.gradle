@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.7'
 }
 
 group 'seedu.duke'
@@ -12,7 +13,8 @@ repositories {
 
 application {
     // Change this to your main class.
-    mainClassName = "cs2103t.duke.Duke"
+    //mainClassName = "cs2103t.duke.Duke"
+    mainClassName = "cs2103t.duke.HelloWorld"
 }
 
 run {
@@ -25,6 +27,11 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+javafx {
+    version = "11.0.2"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
 
