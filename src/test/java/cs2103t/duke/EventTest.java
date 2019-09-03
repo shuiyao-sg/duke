@@ -1,3 +1,4 @@
+package cs2103t.duke;
 
 import cs2103t.duke.Event;
 import org.junit.jupiter.api.Test;
