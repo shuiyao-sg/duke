@@ -1,4 +1,4 @@
-package cs2103t.duke;
+package cs2103t.duke.gui;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

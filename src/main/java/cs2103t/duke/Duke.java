@@ -14,4 +14,8 @@ public class Duke {
         TextUi ui = new TextUi();
         ui.run();
     }
+
+    public static String getResponse(String text) {
+        return text;
+    }
 }
