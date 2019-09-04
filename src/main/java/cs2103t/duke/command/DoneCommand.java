@@ -28,12 +28,19 @@ public class DoneCommand extends Command {
         this.storage = new Storage(FILE_PATH);
     }
 
+    /*
     @Override
     public void execute() throws IOException {
         String initialTask = super.task.toString();
         super.task.markAsDone();
         storage.overwriteText(initialTask, super.task.toString());
         printTaskDone(super.task);
+    }
+
+     */
+
+    public String execute() throws IOException {
+        return "DoneCommand";
     }
 
     private static void printTaskDone(Task task) {

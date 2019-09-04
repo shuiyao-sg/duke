@@ -29,11 +29,18 @@ public class DeleteCommand extends Command {
         this.storage = new Storage(FILE_PATH);
     }
 
+    /*
     @Override
     public void execute() throws IOException {
         super.list.deleteTask(index);
         storage.deleteText(super.task.toString());
         printTaskDeleted(super.list, super.task);
+    }
+
+     */
+
+    public String execute() throws IOException {
+        return "DeleteCommand";
     }
 
     private static void printTaskDeleted(TaskList list, Task task) {

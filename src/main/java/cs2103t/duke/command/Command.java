@@ -30,12 +30,14 @@ public abstract class Command {
     public Command() {
     }
 
-    /**
-     * Executes the command. Returns void.
-     *
-     * @throws IOException
-     */
-    public abstract void execute() throws IOException;
+//    /**
+//     * Executes the command. Returns void.
+//     *
+//     * @throws IOException
+//     */
+//    public abstract void execute() throws IOException;
+
+    public abstract String execute() throws IOException;
 
     protected static String indentText(String input, int indentLevel) {
         return String.format("%1$" + (input.length() + indentLevel) + "s\n", input);

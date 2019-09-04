@@ -2,6 +2,8 @@ package cs2103t.duke.command;
 
 import cs2103t.duke.TaskList;
 
+import java.io.IOException;
+
 /**
  * Encapsulates a list command to list out all the tasks.
  */
@@ -17,9 +19,16 @@ public class ListCommand extends Command {
         super(list);
     }
 
+    /*
     @Override
     public void execute() {
         printList(super.list);
+    }
+
+     */
+
+    public String execute() throws IOException {
+        return "ListCommand";
     }
 
     private static void printList(TaskList list) {

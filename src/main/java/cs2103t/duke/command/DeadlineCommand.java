@@ -27,11 +27,18 @@ public class DeadlineCommand extends Command {
         this.storage = new Storage(FILE_PATH);
     }
 
+    /*
     @Override
     public void execute() throws IOException {
         super.list.addTask(super.task);
         this.storage.appendText(super.task.toString());
         printTaskAdded(super.list, super.task);
+    }
+
+     */
+
+    public String execute() throws IOException {
+        return "DeadlineCommand";
     }
 
     private static void printTaskAdded(TaskList list, Task task) {
