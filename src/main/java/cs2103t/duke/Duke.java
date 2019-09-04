@@ -10,26 +10,12 @@ import java.io.IOException;
  */
 public class Duke {
 
-//    /**
-//     * Starts the program.
-//     *
-//     * @param args arguments passed in.
-//     */
-//    public static void main(String[] args) {
-//        TextUi ui = new TextUi();
-//        ui.run();
-//    }
-
-    private static final String FILE_PATH = "F:/CS2103T/Duke/data/duke.txt";
+    private static final String FILE_PATH = "src/data/duke.txt";
     private static Parser parser;
 
-    Storage storage;
-    TaskList list;
-    //Parser parser;
-
     public Duke() {
-        storage = new Storage(FILE_PATH);
-        list = storage.genTaskListFromFile();
+        Storage storage = new Storage(FILE_PATH);
+        TaskList list = storage.genTaskListFromFile();
         parser = new Parser(list);
     }
 

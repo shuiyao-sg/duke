@@ -23,24 +23,8 @@ public class FindCommand extends Command {
         this.text = text;
     }
 
-    /*
-    @Override
-    public void execute() {
-        TaskList taskList = this.list.query(this.text);
-        printList(taskList);
-    }
-
-     */
-
     public String execute() throws IOException {
-        return "FindCommand";
-    }
-
-    private static void printList(TaskList list) {
-        System.out.println(HORIZONTAL_LINE);
-        System.out.print(indentText(FIND_MESSAGE, TEXT_INDENT_LEVEL));
-        System.out.println(list);
-        System.out.println(HORIZONTAL_LINE);
-        System.out.println();
+        TaskList taskList = this.list.query(this.text);
+        return FIND_MESSAGE + "\n" + taskList.toString();
     }
 }

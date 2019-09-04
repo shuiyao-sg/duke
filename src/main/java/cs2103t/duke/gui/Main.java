@@ -155,7 +155,7 @@ import java.io.IOException;
  * A GUI for Duke using FXML.
  */
 public class Main extends Application {
-//    private static final String FILE_PATH = "F:/CS2103T/Duke/data/duke.txt";
+//    private static final String FILE_PATH = "F:/CS2103T/Dukesrc/data/duke.txt";
 
     private Duke duke = new Duke();
 //    Storage storage = new Storage(FILE_PATH);

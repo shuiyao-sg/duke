@@ -1,7 +1,6 @@
 package cs2103t.duke.command;
 
 import cs2103t.duke.Storage;
-import cs2103t.duke.Task;
 import cs2103t.duke.TaskList;
 
 import java.io.IOException;
@@ -28,26 +27,10 @@ public class DoneCommand extends Command {
         this.storage = new Storage(FILE_PATH);
     }
 
-    /*
-    @Override
-    public void execute() throws IOException {
+    public String execute() throws IOException {
         String initialTask = super.task.toString();
         super.task.markAsDone();
         storage.overwriteText(initialTask, super.task.toString());
-        printTaskDone(super.task);
-    }
-
-     */
-
-    public String execute() throws IOException {
-        return "DoneCommand";
-    }
-
-    private static void printTaskDone(Task task) {
-        System.out.println(HORIZONTAL_LINE);
-        System.out.print(indentText(TASK_DONE_MESSAGE, TEXT_INDENT_LEVEL));
-        System.out.print(indentText(task.toString(), TEXT_INDENT_LEVEL));
-        System.out.println(HORIZONTAL_LINE);
-        System.out.println();
+        return TASK_DONE_MESSAGE + "\n" + task.toString();
     }
 }

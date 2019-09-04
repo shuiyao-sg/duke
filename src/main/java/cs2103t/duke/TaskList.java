@@ -73,7 +73,7 @@ public class TaskList {
             int index = i + 1;
             Task task = listBody.get(i);
             String temp = index + "." + task.toString();
-            output += String.format("%1$" + (temp.length() + INDENT_LEVEL) + "s\n", temp);
+            output += temp + "\n";
         }
         return output;
     }

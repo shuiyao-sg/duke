@@ -19,23 +19,7 @@ public class ListCommand extends Command {
         super(list);
     }
 
-    /*
-    @Override
-    public void execute() {
-        printList(super.list);
-    }
-
-     */
-
     public String execute() throws IOException {
-        return "ListCommand";
-    }
-
-    private static void printList(TaskList list) {
-        System.out.println(HORIZONTAL_LINE);
-        System.out.print(indentText(LIST_MESSAGE, TEXT_INDENT_LEVEL));
-        System.out.println(list);
-        System.out.println(HORIZONTAL_LINE);
-        System.out.println();
+        return LIST_MESSAGE + "\n" + list.toString();
     }
 }

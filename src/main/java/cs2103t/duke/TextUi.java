@@ -20,11 +20,11 @@ public class TextUi {
             + "| |_| | |_| |   <  __/\n"
             + "|____/ \\__,_|_|\\_\\___|\n";
 
-    private static final String FILE_PATH = "F:/CS2103T/Duke/data/duke.txt";
+    private static final String FILE_PATH = "src/data/duke.txt";
     private static final String GREET_MESSAGE_FIRST_LINE = "Hello! I'm cs2103t.duke.Duke";
     private static final String GREET_MESSAGE_SECOND_LINE = "What can I do for you?";
 
-    private static void greet() {
+    static void greet() {
         System.out.println("Hello from\n" + LOGO);
         System.out.println(HORIZONTAL_LINE);
         System.out.print(indentText(GREET_MESSAGE_FIRST_LINE, TEXT_INDENT_LEVEL));
