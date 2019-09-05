@@ -1,6 +1,3 @@
-[T][Y] read book 1
-[D][Y] return book 2 by: 3 AUGUST 2019
-[T][N] read book 3
-[T][N] read book 4
-[T][N] read book 6
-[T][N] read book 7
+[D][N] return book 1 by: 1 FEBRUARY 2019
+[T][N] read book 2
+[D][N] return book 2 by: 6 AUGUST 2019
