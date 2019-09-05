@@ -8,8 +8,8 @@ public class TaskTest {
     @Test
     public void markAsDoneTest() {
         Task task = new Task("read");
-        assertEquals("[" + "\u2718" + "]", task.getStatusIcon());
+        assertEquals("[" + "N" + "]", task.getStatusIcon());
         task.markAsDone();
-        assertEquals("[" + "\u2713" + "]", task.getStatusIcon());
+        assertEquals("[" + "Y" + "]", task.getStatusIcon());
     }
 }

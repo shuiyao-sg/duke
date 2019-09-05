@@ -2,7 +2,6 @@ package cs2103t.duke.command;
 
 import cs2103t.duke.Deadline;
 import cs2103t.duke.Storage;
-import cs2103t.duke.Task;
 import cs2103t.duke.TaskList;
 
 import java.io.IOException;
@@ -27,15 +26,9 @@ public class DeadlineCommand extends Command {
         this.storage = new Storage(FILE_PATH);
     }
 
-    @Override
-    public void execute() throws IOException {
+    public String execute() throws IOException {
         super.list.addTask(super.task);
         this.storage.appendText(super.task.toString());
-        printTaskAdded(super.list, super.task);
-    }
-
-    private static void printTaskAdded(TaskList list, Task task) {
-        System.out.println(HORIZONTAL_LINE);
-        printTask(list, task, TASK_ADDED_MESSAGE);
+        return stringifyTask(super.list, super.task, TASK_ADDED_MESSAGE);
     }
 }

@@ -1,7 +1,6 @@
 package cs2103t.duke.command;
 
 import cs2103t.duke.Storage;
-import cs2103t.duke.Task;
 import cs2103t.duke.TaskList;
 
 import java.io.IOException;
@@ -29,15 +28,9 @@ public class DeleteCommand extends Command {
         this.storage = new Storage(FILE_PATH);
     }
 
-    @Override
-    public void execute() throws IOException {
+    public String execute() throws IOException {
         super.list.deleteTask(index);
         storage.deleteText(super.task.toString());
-        printTaskDeleted(super.list, super.task);
-    }
-
-    private static void printTaskDeleted(TaskList list, Task task) {
-        System.out.println(HORIZONTAL_LINE);
-        printTask(list, task, TASK_DELETED_MESSAGE);
+        return stringifyTask(super.list, super.task, TASK_DELETED_MESSAGE);
     }
 }

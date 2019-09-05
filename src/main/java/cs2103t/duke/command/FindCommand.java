@@ -2,6 +2,8 @@ package cs2103t.duke.command;
 
 import cs2103t.duke.TaskList;
 
+import java.io.IOException;
+
 /**
  * Encapsulates a find command to search for a keyword.
  */
@@ -21,17 +23,8 @@ public class FindCommand extends Command {
         this.text = text;
     }
 
-    @Override
-    public void execute() {
+    public String execute() throws IOException {
         TaskList taskList = this.list.query(this.text);
-        printList(taskList);
-    }
-
-    private static void printList(TaskList list) {
-        System.out.println(HORIZONTAL_LINE);
-        System.out.print(indentText(FIND_MESSAGE, TEXT_INDENT_LEVEL));
-        System.out.println(list);
-        System.out.println(HORIZONTAL_LINE);
-        System.out.println();
+        return FIND_MESSAGE + "\n" + taskList.toString();
     }
 }

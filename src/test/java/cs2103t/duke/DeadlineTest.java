@@ -1,6 +1,5 @@
 package cs2103t.duke;
 
-import cs2103t.duke.Deadline;
 import cs2103t.duke.exceptions.DukeIllegalArgumentException;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +11,7 @@ public class DeadlineTest {
     public void genDeadline_illegalFormat_exceptionThrown() {
         try {
             String input = "return book BY 02/03/2019";
-            assertEquals("[D]" + "[" + "\u2718" + "]" + " return book by: 2 MARCH 2019", Deadline.genDeadline(input));
+            assertEquals("[D]" + "[" + "N" + "]" + " return book by: 2 MARCH 2019", Deadline.genDeadline(input));
             fail();
         } catch (DukeIllegalArgumentException e) {
             String horizontalLine = " " + " " + " " + " " + "____________________________________________________________";
