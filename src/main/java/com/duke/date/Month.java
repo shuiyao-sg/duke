@@ -89,4 +89,8 @@ public enum Month {
             return null;
         }
     }
+
+    public int getValue() {
+        return value;
+    }
 }
