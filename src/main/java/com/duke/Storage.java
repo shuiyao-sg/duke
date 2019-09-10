@@ -35,9 +35,7 @@ public class Storage {
      */
     public void appendText(String input) throws DukeFileNotFoundException, IOException {
         try {
-            FileWriter fw = new FileWriter(this.filePath, true); // if file not found, need to create new file
-            fw.write(input + System.lineSeparator());
-            fw.close();
+            writeToFile(input + System.lineSeparator(), true);
         } catch (FileNotFoundException e) {
             throw new DukeFileNotFoundException("File " + filePath + " not found by Duke");
         }
@@ -52,21 +50,8 @@ public class Storage {
      */
     public void overwriteText(String oldString, String newString) throws IOException {
         try {
-            List<String> inputList = Files.readAllLines(Paths.get(filePath));
-
-            String output = "";
-
-            for (String s : inputList) {
-                if (s.equals(oldString)) {
-                    output += newString + System.lineSeparator();
-                } else {
-                    output += s + System.lineSeparator();
-                }
-            }
-
-            FileWriter fw = new FileWriter(filePath, false);
-            fw.write(output);
-            fw.close();
+            String output = validateTextOutput(oldString, newString, true);
+            writeToFile(output, false);
         } catch (FileNotFoundException e) {
             throw new DukeFileNotFoundException("File " + filePath + " not found by Duke");
         }
@@ -80,21 +65,31 @@ public class Storage {
      */
     public void deleteText(String toDelete) throws IOException {
         try {
-            List<String> inputList = Files.readAllLines(Paths.get(filePath));
-            String output = "";
-
-            for (String s : inputList) {
-                if (!s.equals(toDelete)) {
-                    output += s + System.lineSeparator();
-                }
-            }
-
-            FileWriter fw = new FileWriter(filePath, false);
-            fw.write(output);
-            fw.close();
+            String output = validateTextOutput(toDelete, "", false);
+            writeToFile(output, false);
         } catch (FileNotFoundException e) {
             throw new DukeFileNotFoundException("File " + filePath + " not found by Duke");
         }
+    }
+
+    private void writeToFile(String input, boolean isAppendable) throws IOException {
+        FileWriter fw = new FileWriter(filePath, isAppendable);
+        fw.write(input);
+        fw.close();
+    }
+
+    private String validateTextOutput(String oldString, String newString, boolean isOverwrite) throws IOException {
+        List<String> inputList = Files.readAllLines(Paths.get(filePath));
+
+        String output = "";
+        for (String s : inputList) {
+            if (!s.equals(oldString)) {
+                output += s + System.lineSeparator();
+            } else if (isOverwrite) {
+                output += newString + System.lineSeparator();
+            }
+        }
+        return output;
     }
 
     /**
@@ -115,6 +110,7 @@ public class Storage {
         } catch (FileNotFoundException e) {
             try {
                 FileWriter fw = new FileWriter(filePath);
+                fw.close();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -139,10 +135,5 @@ public class Storage {
         } catch (FileNotFoundException e) {
             return;
         }
-    }
-
-    public void saveTaskListToFile(TaskList list) throws IOException {
-        FileWriter fw = new FileWriter(filePath);
-
     }
 }
