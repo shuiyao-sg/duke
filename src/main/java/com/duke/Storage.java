@@ -140,4 +140,9 @@ public class Storage {
             return;
         }
     }
+
+    public void saveTaskListToFile(TaskList list) throws IOException {
+        FileWriter fw = new FileWriter(filePath);
+
+    }
 }
