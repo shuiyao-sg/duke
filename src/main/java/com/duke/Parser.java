@@ -99,8 +99,10 @@ public class Parser {
         }
 
         String secondLine = "Permissible command: [list], [done], [todo], [deadline], [event], [bye]";
-        throw new DukeIllegalArgumentException("Illegal user input.\n"
-                + String.format("%1$" + (secondLine.length() + 5) + "s", secondLine));
+        String errorMessage = "Illegal user input.\n"
+                + String.format("%1$" + (secondLine.length() + 5) + "s", secondLine);
+        assert false : errorMessage;
+        throw new DukeIllegalArgumentException(errorMessage);
     }
 
     private static String reformString(String[] arr, int start, int end) {
