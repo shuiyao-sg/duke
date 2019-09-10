@@ -32,7 +32,7 @@ public class Duke {
         try {
             Command command = parser.parseCommand(text);
             return command.execute();
-        } catch (DukeException | IOException e) {
+        } catch (DukeException | IOException | AssertionError e) {
             return e.getMessage();
         }
     }

@@ -1,5 +1,7 @@
 package com.duke.date;
 
+import com.duke.exceptions.DukeIllegalArgumentException;
+
 /**
  * Encapsulates a month, from January to December.
  */
@@ -56,7 +58,8 @@ public enum Month {
         case 12:
             return DECEMBER;
         default:
-            return null;
+            assert false : "Expecting integer between 1-12, but encountered: " + i;
+            throw new DukeIllegalArgumentException("Invalid input for month");
         }
     }
 
@@ -86,7 +89,8 @@ public enum Month {
         } else if (month.equalsIgnoreCase("DECEMBER")) {
             return DECEMBER;
         } else {
-            return null;
+            assert false : "Invalid input format for month. Encountered: " + month;
+            throw new DukeIllegalArgumentException("Invalid input format for month");
         }
     }
 
