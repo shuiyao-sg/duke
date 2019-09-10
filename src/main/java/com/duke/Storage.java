@@ -113,6 +113,11 @@ public class Storage {
             }
             return taskList;
         } catch (FileNotFoundException e) {
+            try {
+                FileWriter fw = new FileWriter(filePath);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             System.out.println("File " + filePath + " not found by Duke. New task list generated");
             return new TaskList();
         }
