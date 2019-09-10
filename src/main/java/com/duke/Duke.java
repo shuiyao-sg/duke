@@ -31,7 +31,6 @@ public class Duke {
     public static String getResponse(String text) {
         try {
             Command command = parser.parseCommand(text);
-
             return command.execute();
         } catch (DukeException | IOException e) {
             return e.getMessage();

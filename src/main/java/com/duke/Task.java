@@ -49,35 +49,35 @@ public class Task {
      * @return Task specified by the String.
      */
     public static Task genTaskFromFileString(String s) {
-        char taskType = s.charAt(1);
-        String isDone = s.charAt(4) + "";
+        String status = s.charAt(4) + "";
 
+        Task task = genDefaultTaskFromFileString(s);
+        task.validateStatus(status);
+        return task;
+    }
+
+    private void validateStatus(String status) {
+        if (status.equals("T")) {
+            this.markAsDone();
+        }
+    }
+
+    private static Task genDefaultTaskFromFileString(String s) {
+        char taskType = s.charAt(1);
         int index = s.indexOf("] ");
         String taskContent = s.substring(index + 1).trim();
 
         switch (taskType) {
         case 'T':
-            Task todo = new ToDo(taskContent);
-            if (isDone.equals("T")) {
-                todo.markAsDone();
-            }
-            return todo;
+            return new ToDo(taskContent);
         case 'D':
             String[] deadlineContentArray = taskContent.split("by:");
-            Task deadline = new Deadline(deadlineContentArray[0].trim(), deadlineContentArray[1].trim());
-            if (isDone.equals("T")) {
-                deadline.markAsDone();
-            }
-            return deadline;
+            return new Deadline(deadlineContentArray[0].trim(), deadlineContentArray[1].trim());
         case 'E':
             String[] eventContentArray = taskContent.split("at:");
-            Task event = new Event(eventContentArray[0].trim(), eventContentArray[1].trim());
-            if (isDone.equals("T")) {
-                event.markAsDone();
-            }
-            return event;
+            return new Event(eventContentArray[0].trim(), eventContentArray[1].trim());
         default:
-            return null;
+            throw new DukeIllegalArgumentException("Illegal input from file");
         }
     }
 

@@ -1,3 +1,6 @@
-[D][N] return book 1 by: 1 FEBRUARY 2019
-[T][N] read book 2
-[D][N] return book 2 by: 6 AUGUST 2019
+[D][N] return book1 by: 2 AUGUST 2019 16:00
+[E][N] project meeting at: 3 SEPTEMBER 2018
+[E][N] homework at: 2 SEPTEMBER 2019 13:00 to 15:00
+[D][N] return book 2 by: 2 AUGUST 2019
+[D][Y] return book 3 by: 2 SEPTEMBER 2019 16:00
+[T][Y] read book 4

@@ -57,7 +57,6 @@ public enum Month {
             return DECEMBER;
         default:
             return null;
-
         }
     }
 
@@ -89,5 +88,9 @@ public enum Month {
         } else {
             return null;
         }
+    }
+
+    public int getValue() {
+        return value;
     }
 }
