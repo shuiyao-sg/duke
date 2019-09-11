@@ -101,7 +101,6 @@ public class Parser {
         String secondLine = "Permissible command: [list], [done], [todo], [deadline], [event], [bye]";
         String errorMessage = "Illegal user input.\n"
                 + String.format("%1$" + (secondLine.length() + 5) + "s", secondLine);
-        assert false : errorMessage;
         throw new DukeIllegalArgumentException(errorMessage);
     }
 
