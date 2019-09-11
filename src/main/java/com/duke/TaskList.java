@@ -2,6 +2,8 @@ package com.duke;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Encapsulates a list of the tasks.
@@ -16,6 +18,10 @@ public class TaskList {
      */
     public TaskList() {
         this.listBody = new ArrayList<>();
+    }
+
+    private TaskList(List<Task> tasks) {
+        this.listBody = tasks;
     }
 
     /**
@@ -57,21 +63,20 @@ public class TaskList {
 
     /**
      * Generates a task list with each task containing specified text.
+     *
      * @param text text to search.
      * @return task list with tasks containing input text.
      */
     public TaskList query(String text) {
-        TaskList taskList = new TaskList();
-        for (Task task : this.listBody) {
-            if (task.toString().contains(text)) {
-                taskList.addTask(task);
-            }
-        }
-        return taskList;
+        List<Task> tasks = this.listBody.stream()
+                .filter(task -> task.toString().contains(text))
+                .collect(Collectors.toList());
+        return new TaskList(tasks);
     }
 
     @Override
     public String toString() {
+        /*
         String output = "";
 
         for (int i = 0; i < listBody.size(); i++) {
@@ -81,5 +86,10 @@ public class TaskList {
             output += temp + "\n";
         }
         return output;
+
+         */
+        return IntStream.range(0, this.listBody.size())
+                .mapToObj(i -> (i + 1) + "." + listBody.get(i).toString() + "\n")
+                .reduce("", (x, y) -> x + y);
     }
 }
