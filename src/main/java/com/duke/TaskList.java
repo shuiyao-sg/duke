@@ -76,18 +76,6 @@ public class TaskList {
 
     @Override
     public String toString() {
-        /*
-        String output = "";
-
-        for (int i = 0; i < listBody.size(); i++) {
-            int index = i + 1;
-            Task task = listBody.get(i);
-            String temp = index + "." + task.toString();
-            output += temp + "\n";
-        }
-        return output;
-
-         */
         return IntStream.range(0, this.listBody.size())
                 .mapToObj(i -> (i + 1) + "." + listBody.get(i).toString() + "\n")
                 .reduce("", (x, y) -> x + y);

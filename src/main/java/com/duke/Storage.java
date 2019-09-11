@@ -80,7 +80,6 @@ public class Storage {
 
     private String validateTextOutput(String oldString, String newString, boolean isOverwrite) throws IOException {
         List<String> inputList = Files.readAllLines(Paths.get(filePath));
-
         String output = "";
         for (String s : inputList) {
             if (!s.equals(oldString)) {
