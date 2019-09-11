@@ -58,7 +58,6 @@ public enum Month {
         case 12:
             return DECEMBER;
         default:
-            assert false : "Expecting integer between 1-12, but encountered: " + i;
             throw new DukeIllegalArgumentException("Invalid input for month");
         }
     }
