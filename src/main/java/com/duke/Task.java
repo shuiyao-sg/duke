@@ -57,7 +57,7 @@ public class Task {
     }
 
     private void validateStatus(String status) {
-        if (status.equals("T")) {
+        if (status.equals("Y")) {
             this.markAsDone();
         }
     }
