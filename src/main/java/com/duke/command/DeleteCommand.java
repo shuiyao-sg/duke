@@ -1,6 +1,7 @@
 package com.duke.command;
 
 import com.duke.Storage;
+import com.duke.Task;
 import com.duke.TaskList;
 
 import java.io.IOException;
@@ -38,5 +39,15 @@ public class DeleteCommand extends Command {
         super.list.deleteTask(index);
         storage.deleteText(super.task.toString());
         return stringifyTask(super.list, super.task, TASK_DELETED_MESSAGE);
+    }
+
+    @Override
+    public Task getDeletedTask() {
+        return super.list.getTask(index);
+    }
+
+    @Override
+    public boolean isDeleteCommand() {
+        return true;
     }
 }

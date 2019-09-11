@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 /**
  * Encapsulates a file I/O class to deal with loading tasks from the file and saving tasks in the file.
@@ -36,6 +37,21 @@ public class Storage {
     public void appendText(String input) throws DukeFileNotFoundException, IOException {
         try {
             writeToFile(input + System.lineSeparator(), true);
+        } catch (FileNotFoundException e) {
+            throw new DukeFileNotFoundException("File " + filePath + " not found by Duke");
+        }
+    }
+
+    /**
+     * Inserts text to specified position in file.
+     *
+     * @param position the position where the text is inserted.
+     * @param text     the text to be inserted.
+     * @throws IOException if failed to read or write to file.
+     */
+    public void insertText(int position, String text) throws IOException {
+        try {
+            writeToFile(validateTextOutput(position, text), false);
         } catch (FileNotFoundException e) {
             throw new DukeFileNotFoundException("File " + filePath + " not found by Duke");
         }
@@ -89,6 +105,19 @@ public class Storage {
             }
         }
         return output;
+    }
+
+    private String validateTextOutput(int index, String text) throws IOException {
+        List<String> inputList = Files.readAllLines(Paths.get(filePath));
+        //String output = "";
+
+        return IntStream.rangeClosed(0, inputList.size())
+                .mapToObj(i -> i > index
+                        ? inputList.get(i - 1) + System.lineSeparator()
+                        : i < index
+                        ? inputList.get(i) + System.lineSeparator()
+                        : text + System.lineSeparator())
+                .reduce("", (x, y) -> x + y);
     }
 
     /**

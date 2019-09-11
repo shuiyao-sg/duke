@@ -43,6 +43,16 @@ public class Task {
     }
 
     /**
+     * Marks the task as not done.
+     */
+    public void markAsNotDone() {
+        if (!this.isDone) {
+            throw new RedundantOperationException("The task has already been done");
+        }
+        this.isDone = false;
+    }
+
+    /**
      * Converts String in file to Task.
      *
      * @param s String representation of tasks in file.

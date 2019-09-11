@@ -10,6 +10,7 @@ import com.duke.command.EventCommand;
 import com.duke.command.FindCommand;
 import com.duke.command.ListCommand;
 import com.duke.command.ToDoCommand;
+import com.duke.command.UndoCommand;
 import com.duke.exceptions.DukeIllegalArgumentException;
 
 /**
@@ -44,6 +45,10 @@ public class Parser {
 
         if (input.equals("list")) {
             return new ListCommand(this.list);
+        }
+
+        if (input.equals("undo")) {
+            return new UndoCommand(this.list, Duke.recycleBin);
         }
 
         String[] inputArray = input.split(" ");

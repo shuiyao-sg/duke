@@ -12,6 +12,7 @@ public class Duke {
 
     private static final String FILE_PATH = "src/data/duke.txt";
     private static Parser parser;
+    static RecycleBin recycleBin;
 
     /**
      * Constructs a Duke object.
@@ -20,6 +21,7 @@ public class Duke {
         Storage storage = new Storage(FILE_PATH);
         TaskList list = storage.genTaskListFromFile();
         parser = new Parser(list);
+        recycleBin = new RecycleBin();
     }
 
     /**
@@ -31,6 +33,12 @@ public class Duke {
     public static String getResponse(String text) {
         try {
             Command command = parser.parseCommand(text);
+            if (!command.isUndoCommand()) {
+                recycleBin.addCommandString(text);
+                if (command.isDeleteCommand()) {
+                    recycleBin.addDeletedTasks(command.getDeletedTask());
+                }
+            }
             return command.execute();
         } catch (DukeException | IOException | AssertionError e) {
             return e.getMessage();

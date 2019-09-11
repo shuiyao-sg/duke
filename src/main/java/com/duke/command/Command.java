@@ -41,4 +41,26 @@ public abstract class Command {
     public boolean isByeCommand() {
         return false;
     }
+
+    /**
+     * Checks whether the Command is a DeleteCommand.
+     *
+     * @return true if it is a DeleteCommand, false otherwise.
+     */
+    public boolean isDeleteCommand() {
+        return false;
+    }
+
+    /**
+     * Checks whether the Command is a UndoCommand.
+     *
+     * @return true if it is a UndoCommand, false otherwise.
+     */
+    public boolean isUndoCommand() {
+        return false;
+    }
+
+    public Task getDeletedTask() {
+        return new Task("");
+    }
 }

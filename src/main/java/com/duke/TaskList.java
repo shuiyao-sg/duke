@@ -33,6 +33,10 @@ public class TaskList {
         this.listBody.add(task);
     }
 
+    public void addTask(int index, Task task) {
+        this.listBody.add(index, task);
+    }
+
     /**
      * Deletes task from the TaskList.
      *
