@@ -60,7 +60,6 @@ public class Task {
      */
     public static Task genTaskFromFileString(String s) {
         String status = s.charAt(4) + "";
-        System.out.println("status: " + status);
         Task task = genDefaultTaskFromFileString(s);
         task.validateStatus(status);
         return task;
