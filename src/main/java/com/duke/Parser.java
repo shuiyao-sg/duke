@@ -1,6 +1,5 @@
 package com.duke;
 
-
 import com.duke.command.ByeCommand;
 import com.duke.command.Command;
 import com.duke.command.DeadlineCommand;
@@ -38,75 +37,58 @@ public class Parser {
         if (input.isBlank()) {
             throw new DukeIllegalArgumentException("Empty user input is not allowed");
         }
-
         if (input.equals("bye")) {
             return new ByeCommand();
-        }
-
-        if (input.equals("list")) {
+        } else if (input.equals("list")) {
             return new ListCommand(this.list);
-        }
-
-        if (input.equals("undo")) {
+        } else if (input.equals("undo")) {
             return new UndoCommand(this.list, Duke.recycleBin);
         }
 
         String[] inputArray = input.split(" ");
-
-        if (inputArray[0].equals("done")) {
-            try {
-                int index = Integer.parseInt(inputArray[1]) - 1;
-                return new DoneCommand(this.list, index);
-            } catch (ArrayIndexOutOfBoundsException e) {
-                throw new DukeIllegalArgumentException("Please enter an integer after 'done'");
-            } catch (NumberFormatException e) {
-                throw new DukeIllegalArgumentException("Input is not an integer. "
-                        + "Please enter an integer after 'done'");
-            } catch (IndexOutOfBoundsException e) {
-                throw new DukeIllegalArgumentException("Please input a number between 1 and "
-                        + this.list.size() + " (inclusive)");
-            }
+        if (inputArray[0].equals("done") || inputArray[0].equals("delete")) {
+            return getCommand(inputArray[0], inputArray[1]);
         }
 
-        if (inputArray[0].equals("delete")) {
-            try {
-                int index = Integer.parseInt(inputArray[1]) - 1;
-                return new DeleteCommand(this.list, index);
-            } catch (ArrayIndexOutOfBoundsException e) {
-                throw new DukeIllegalArgumentException("Please enter an integer after 'delete'");
-            } catch (NumberFormatException e) {
-                throw new DukeIllegalArgumentException("Input is not an integer. "
-                        + "Please enter an integer after 'delete'");
-            } catch (IndexOutOfBoundsException e) {
-                throw new DukeIllegalArgumentException("Please input a number between 1 and "
-                        + list.size() + " (inclusive)");
-            }
-        }
-
+        String description = reformString(inputArray, 1, inputArray.length - 1);
         if (inputArray[0].equals("todo")) {
-            String des = reformString(inputArray, 1, inputArray.length - 1);
-            return new ToDoCommand(this.list, des);
+            return new ToDoCommand(this.list, description);
+        } else if (inputArray[0].equals("deadline")) {
+            return new DeadlineCommand(this.list, description);
+        } else if (inputArray[0].equals("event")) {
+            return new EventCommand(this.list, description);
+        } else if (inputArray[0].equals("find")) {
+            return new FindCommand(this.list, description);
         }
 
-        if (inputArray[0].equals("deadline")) {
-            String s = reformString(inputArray, 1, inputArray.length - 1);
-            return new DeadlineCommand(this.list, s);
-        }
+        throw new DukeIllegalArgumentException(getExceptionMessage());
+    }
 
-        if (inputArray[0].equals("event")) {
-            String s = reformString(inputArray, 1, inputArray.length - 1);
-            return new EventCommand(this.list, s);
-        }
-
-        if (inputArray[0].equals("find")) {
-            String s = reformString(inputArray, 1, inputArray.length - 1);
-            return new FindCommand(this.list, s);
-        }
-
+    private String getExceptionMessage() {
         String secondLine = "Permissible command: [list], [done], [todo], [deadline], [event], [bye]";
-        String errorMessage = "Illegal user input.\n"
+        return "Illegal user input.\n"
                 + String.format("%1$" + (secondLine.length() + 5) + "s", secondLine);
-        throw new DukeIllegalArgumentException(errorMessage);
+    }
+
+    private Command getCommand(String command, String position) {
+        try {
+            int index = Integer.parseInt(position) - 1;
+            if (command.equals("done")) {
+                return new DoneCommand(this.list, index);
+            } else if (command.equals("delete")) {
+                return new DeleteCommand(this.list, index);
+            } else {
+                throw new DukeIllegalArgumentException("Please enter either 'done' or 'delete'");
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new DukeIllegalArgumentException("Please enter an integer after " + "'" + command + "'");
+        } catch (NumberFormatException e) {
+            throw new DukeIllegalArgumentException("Input is not an integer. "
+                    + "Please enter an integer after " + "'" + command + "'");
+        } catch (IndexOutOfBoundsException e) {
+            throw new DukeIllegalArgumentException("Please input a number between 1 and "
+                    + list.size() + " (inclusive)");
+        }
     }
 
     private static String reformString(String[] arr, int start, int end) {
