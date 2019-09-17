@@ -5,17 +5,18 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
-<fx:root alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" type="HBox" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
+<fx:root alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+         minHeight="-Infinity" type="HBox" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
         <Label fx:id="dialog" text="Label" maxHeight="1.7976931348623157E308">
-         <font>
-            <Font name="Arial Bold" size="12.0" />
-         </font>
-      </Label>
-        <ImageView fx:id="displayPicture"  pickOnBounds="true" preserveRatio="true">
+            <font>
+                <Font name="Arial Bold" size="12.0"/>
+            </font>
+        </Label>
+        <ImageView fx:id="displayPicture" pickOnBounds="true" preserveRatio="true">
             <HBox.margin>
-                <Insets right="10.0" />
+                <Insets left="16.0" right="16.0" top="16.0" bottom="16.0"/>
             </HBox.margin>
         </ImageView>
-   </children>
+    </children>
 </fx:root>
