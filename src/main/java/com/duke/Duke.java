@@ -13,12 +13,13 @@ public class Duke {
     private static final String FILE_PATH = "src/data/duke.txt";
     private static Parser parser;
     static RecycleBin recycleBin;
+    private Storage storage;
 
     /**
      * Constructs a Duke object.
      */
     public Duke() {
-        Storage storage = new Storage(FILE_PATH);
+        storage = new Storage(FILE_PATH);
         TaskList list = storage.genTaskListFromFile();
         parser = new Parser(list);
         recycleBin = new RecycleBin();
@@ -43,5 +44,9 @@ public class Duke {
         } catch (DukeException | IOException | AssertionError e) {
             return e.getMessage();
         }
+    }
+
+    public String getRemainingTasks() {
+        return storage.getFileContent();
     }
 }
