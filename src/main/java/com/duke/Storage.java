@@ -109,7 +109,6 @@ public class Storage {
 
     private String validateTextOutput(int index, String text) throws IOException {
         List<String> inputList = Files.readAllLines(Paths.get(filePath));
-        //String output = "";
 
         return IntStream.rangeClosed(0, inputList.size())
                 .mapToObj(i -> i > index
@@ -136,13 +135,6 @@ public class Storage {
             }
             return taskList;
         } catch (FileNotFoundException e) {
-            try {
-                FileWriter fw = new FileWriter(filePath);
-                fw.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-            System.out.println("File " + filePath + " not found by Duke. New task list generated");
             return new TaskList();
         }
     }
@@ -153,7 +145,7 @@ public class Storage {
     public void printFile() {
         try {
             Scanner fileScanner = new Scanner(new File(filePath));
-            String heading = "File successfully loaded. Remaining tasks: ";
+            String heading = "You have these remaining tasks: ";
             System.out.printf("%1$" + (heading.length() + 5) + "s\n", heading);
 
             while (fileScanner.hasNextLine()) {
@@ -162,6 +154,25 @@ public class Storage {
             }
         } catch (FileNotFoundException e) {
             return;
+        }
+    }
+
+    public String getFileContent() {
+        try {
+            Scanner fileScanner = new Scanner(new File(filePath));
+            StringBuilder output = new StringBuilder("You have these remaining tasks:\n");
+            while (fileScanner.hasNextLine()) {
+                output.append(fileScanner.nextLine().trim() + "\n");
+            }
+            return String.valueOf(output);
+        } catch (FileNotFoundException e) {
+            try {
+                FileWriter fw = new FileWriter(filePath);
+                fw.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return "Task record " + filePath + " not found by Duke. New task list generated.";
         }
     }
 }
