@@ -21,7 +21,7 @@ public class Parser {
     /**
      * Constructs a Parser object.
      *
-     * @param list task list.
+     * @param list Task list.
      */
     public Parser(TaskList list) {
         this.list = list;
@@ -30,8 +30,8 @@ public class Parser {
     /**
      * Parses user's command to instructions for the bot to execute.
      *
-     * @param input command from user input.
-     * @return Command command to be executed.
+     * @param input Command from user input.
+     * @return Command The command to be executed.
      */
     public Command parseCommand(String input) {
         if (input.isBlank()) {

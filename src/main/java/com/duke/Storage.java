@@ -31,8 +31,8 @@ public class Storage {
      * Appends text to the back of a file.
      *
      * @param input Text to append.
-     * @throws DukeFileNotFoundException if file not found.
-     * @throws IOException               if failed to read or write to file.
+     * @throws DukeFileNotFoundException If file not found.
+     * @throws IOException               If failed to read or write to file.
      */
     public void appendText(String input) throws DukeFileNotFoundException, IOException {
         try {
@@ -45,9 +45,9 @@ public class Storage {
     /**
      * Inserts text to specified position in file.
      *
-     * @param position the position where the text is inserted.
-     * @param text     the text to be inserted.
-     * @throws IOException if failed to read or write to file.
+     * @param position The position where the text is inserted.
+     * @param text     The text to be inserted.
+     * @throws IOException If failed to read or write to file.
      */
     public void insertText(int position, String text) throws IOException {
         try {
@@ -60,9 +60,9 @@ public class Storage {
     /**
      * Replaces chosen text in the file with a new String.
      *
-     * @param oldString text to be overwritten.
-     * @param newString new text.
-     * @throws IOException if failed to read or write to file.
+     * @param oldString Text to be overwritten.
+     * @param newString New text.
+     * @throws IOException If failed to read or write to file.
      */
     public void overwriteText(String oldString, String newString) throws IOException {
         try {
@@ -76,8 +76,8 @@ public class Storage {
     /**
      * Deletes the chosen text from the file.
      *
-     * @param toDelete text to delete.
-     * @throws IOException if failed to read or write to file.
+     * @param toDelete Text to delete.
+     * @throws IOException If failed to read or write to file.
      */
     public void deleteText(String toDelete) throws IOException {
         try {
@@ -124,7 +124,7 @@ public class Storage {
      *
      * @return TaskList with tasks remaining in the file.
      */
-    public TaskList genTaskListFromFile() {
+    TaskList genTaskListFromFile() {
         TaskList taskList = new TaskList();
         try {
             Scanner fileScanner = new Scanner(new File(filePath));
@@ -144,19 +144,19 @@ public class Storage {
      *
      * @return String representation of file content.
      */
-    public String getFileContent() {
+    String getFileContent() {
         File file = new File(filePath);
 
         try {
             Scanner fileScanner = new Scanner(file);
             StringBuilder output = new StringBuilder("You have these remaining tasks:\n");
             while (fileScanner.hasNextLine()) {
-                output.append(fileScanner.nextLine().trim() + "\n");
+                output.append(fileScanner.nextLine().trim()).append("\n");
             }
             return String.valueOf(output);
         } catch (FileNotFoundException e) {
             File dir = new File(file.getParent());
-            if(!dir.exists()) {
+            if (!dir.exists()) {
                 dir.mkdirs();
             }
             return "Task record " + filePath + " not found by Duke. New task list generated.";

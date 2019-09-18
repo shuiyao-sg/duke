@@ -8,7 +8,7 @@ public class DukeFileNotFoundException extends DukeException {
     /**
      * Constructs a DukeFileNotFoundException object.
      *
-     * @param message exception message.
+     * @param message Exception message.
      */
     public DukeFileNotFoundException(String message) {
         super(message);

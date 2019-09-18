@@ -13,8 +13,8 @@ public class Deadline extends Task {
     /**
      * Constructs a Deadline object.
      *
-     * @param description task description.
-     * @param by          deadline date.
+     * @param description Task description.
+     * @param by          Deadline date.
      */
     public Deadline(String description, String by) {
         super(description);
@@ -24,7 +24,7 @@ public class Deadline extends Task {
     /**
      * Generates a Deadline task from input String.
      *
-     * @param s deadline date and time represented by String.
+     * @param s Deadline date and time represented by String.
      * @return Deadline task.
      */
     public static Deadline genDeadline(String s) {
@@ -49,5 +49,4 @@ public class Deadline extends Task {
     public String toString() {
         return "[D]" + super.toString() + " by: " + by.toString();
     }
-
 }

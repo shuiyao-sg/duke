@@ -8,15 +8,15 @@ import com.duke.exceptions.DukeIllegalArgumentException;
  */
 public class Event extends Task {
 
-    protected MyDate at;
+    private MyDate at;
 
     /**
      * Constructs an Event object.
      *
-     * @param description task description.
-     * @param at          event date and time represented by String.
+     * @param description Task description.
+     * @param at          Event date and time represented by String.
      */
-    public Event(String description, String at) {
+    Event(String description, String at) {
         super(description);
         this.at = MyDate.genMyDate(at);
     }

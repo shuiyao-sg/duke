@@ -8,7 +8,7 @@ public class DukeIllegalArgumentException extends DukeException {
     /**
      * Constructs a DukeIllegalArgumentException object.
      *
-     * @param message exception message.
+     * @param message Exception message.
      */
     public DukeIllegalArgumentException(String message) {
         super(message);

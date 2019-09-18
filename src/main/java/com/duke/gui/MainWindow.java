@@ -53,12 +53,12 @@ public class MainWindow extends AnchorPane {
         userInput.clear();
     }
 
-    public void printRemainingTasks() {
+    void printRemainingTasks() {
         String remainingTasks = duke.getRemainingTasks();
         dialogContainer.getChildren().add(DialogBox.getDukeDialog(remainingTasks, dukeImage));
     }
 
-    public void greet() {
+    void greet() {
         String greet = "Hi I'm Bing Bing! Nice to meet you!";
         dialogContainer.getChildren().add(DialogBox.getDukeDialog(greet, dukeImage));
     }

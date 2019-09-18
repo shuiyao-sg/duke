@@ -13,8 +13,8 @@ public class Task {
     /**
      * Constructs a Task object.
      *
-     * @param description task description.
-     * @throws DukeIllegalArgumentException if encountered invalid user input.
+     * @param description Task description.
+     * @throws DukeIllegalArgumentException If encountered invalid user input.
      */
     public Task(String description) throws DukeIllegalArgumentException {
         if (description.isBlank()) {
@@ -24,11 +24,16 @@ public class Task {
         this.isDone = false;
     }
 
+    /**
+     * Gets status icon.
+     *
+     * @return "Y" if done. "N" if not done.
+     */
     public String getStatusIcon() {
         return (isDone ? "[" + "Y" + "]" : "[" + "N" + "]"); //return Y or N symbols
     }
 
-    public String getDescription() {
+    private String getDescription() {
         return this.description;
     }
 
@@ -56,9 +61,9 @@ public class Task {
      * Converts String in file to Task.
      *
      * @param s String representation of tasks in file.
-     * @return Task specified by the String.
+     * @return Task Specified by the String.
      */
-    public static Task genTaskFromFileString(String s) {
+    static Task genTaskFromFileString(String s) {
         String status = s.charAt(4) + "";
         Task task = genDefaultTaskFromFileString(s);
         task.validateStatus(status);

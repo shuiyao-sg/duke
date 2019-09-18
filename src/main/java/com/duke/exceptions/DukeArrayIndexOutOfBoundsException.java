@@ -8,7 +8,7 @@ public class DukeArrayIndexOutOfBoundsException extends DukeException {
     /**
      * Contructs a DukeArrayIndexOutOfBoundsException object.
      *
-     * @param message exception message.
+     * @param message Exception message.
      */
     public DukeArrayIndexOutOfBoundsException(String message) {
         super(message);

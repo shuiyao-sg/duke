@@ -9,8 +9,6 @@ import java.io.IOException;
  * Represents a Personal Assistant Chatbot that helps a person to keep track of various things.
  */
 public class Duke {
-
-    //private static final String FILE_PATH = "src/data/duke.txt";
     private static final String FILE_PATH = "data/duke.txt";
     private static Parser parser;
     static RecycleBin recycleBin;
@@ -29,8 +27,8 @@ public class Duke {
     /**
      * Gets Duke's response to user input.
      *
-     * @param text user input text.
-     * @return response by Duke.
+     * @param text User input text.
+     * @return Response by Duke.
      */
     public static String getResponse(String text) {
         try {
@@ -47,6 +45,11 @@ public class Duke {
         }
     }
 
+    /**
+     * Gets remaining tasks from the file.
+     *
+     * @return String representation of remaining tasks.
+     */
     public String getRemainingTasks() {
         return storage.getFileContent();
     }

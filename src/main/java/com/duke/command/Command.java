@@ -9,8 +9,7 @@ import java.io.IOException;
  * Represents command to be executed by Duke.
  */
 public abstract class Command {
-    //protected static final String FILE_PATH = "src/data/duke.txt";
-    protected static final String FILE_PATH = "data/duke.txt";
+    static final String FILE_PATH = "data/duke.txt";
     protected TaskList list;
     protected Task task;
 

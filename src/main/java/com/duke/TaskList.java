@@ -27,7 +27,7 @@ public class TaskList {
     /**
      * Adds task to the TaskList.
      *
-     * @param task task to be added to task list.
+     * @param task Task to be added to task list.
      */
     public void addTask(Task task) {
         this.listBody.add(task);
@@ -40,7 +40,7 @@ public class TaskList {
     /**
      * Deletes task from the TaskList.
      *
-     * @param index index from user input.
+     * @param index Index from user input.
      */
     public void deleteTask(int index) {
         this.listBody.remove(index);
@@ -49,8 +49,8 @@ public class TaskList {
     /**
      * Retrieves task from the TaskList.
      *
-     * @param index index from user input.
-     * @return task to find.
+     * @param index Index from user input.
+     * @return Task to find.
      */
     public Task getTask(int index) {
         return this.listBody.get(index);
@@ -59,12 +59,17 @@ public class TaskList {
     /**
      * Returns size of the task list.
      *
-     * @return size of the task list.
+     * @return Size of the task list.
      */
     public int size() {
         return this.listBody.size();
     }
 
+    /**
+     * Returns if the task list is empty.
+     *
+     * @return True if empty, false otherwise.
+     */
     public boolean isEmpty() {
         return this.listBody.isEmpty();
     }
@@ -72,8 +77,8 @@ public class TaskList {
     /**
      * Generates a task list with each task containing specified text.
      *
-     * @param text text to search.
-     * @return task list with tasks containing input text.
+     * @param text Text to search.
+     * @return Task list with tasks containing input text.
      */
     public TaskList query(String text) {
         List<Task> tasks = this.listBody.stream()
