@@ -72,7 +72,7 @@ public class Parser {
 
     private String getExceptionMessage() {
         return "Invalid user input.\n"
-                + "Permissible command: [list], [done], [todo], [deadline], [event], [undo], [bye]";
+                + "Permissible command: [todo], [deadline], [event], [list], [done], [delete], [find], [undo], [bye]";
     }
 
     private Command getCommand(String command, String position) {
