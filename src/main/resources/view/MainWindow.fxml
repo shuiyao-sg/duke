@@ -19,7 +19,7 @@
                     prefHeight="557.0" prefWidth="600.0" vvalue="1.0" AnchorPane.bottomAnchor="43.0"
                     AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <content>
-                <VBox fx:id="dialogContainer" prefHeight="552.0" prefWidth="600.0" style="-fx-background-color: lightgray;"/>
+                <VBox fx:id="dialogContainer" prefHeight="552.0" prefWidth="600.0" style="-fx-background-color: F1F1F1;"/>
             </content>
         </ScrollPane>
     </children>
