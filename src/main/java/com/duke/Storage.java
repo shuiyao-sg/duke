@@ -157,6 +157,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Gets file content.
+     *
+     * @return String representation of file content.
+     */
     public String getFileContent() {
         try {
             Scanner fileScanner = new Scanner(new File(filePath));
