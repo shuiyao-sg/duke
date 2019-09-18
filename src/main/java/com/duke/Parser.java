@@ -10,6 +10,7 @@ import com.duke.command.FindCommand;
 import com.duke.command.ListCommand;
 import com.duke.command.ToDoCommand;
 import com.duke.command.UndoCommand;
+import com.duke.exceptions.DukeArrayIndexOutOfBoundsException;
 import com.duke.exceptions.DukeIllegalArgumentException;
 
 /**
@@ -33,7 +34,7 @@ public class Parser {
      * @param input Command from user input.
      * @return Command The command to be executed.
      */
-    public Command parseCommand(String input) {
+    Command parseCommand(String input) {
         if (input.isBlank()) {
             throw new DukeIllegalArgumentException("Empty user input is not allowed");
         }
@@ -47,7 +48,12 @@ public class Parser {
 
         String[] inputArray = input.split(" ");
         if (inputArray[0].equals("done") || inputArray[0].equals("delete")) {
-            return getCommand(inputArray[0], inputArray[1]);
+            try {
+                return getCommand(inputArray[0], inputArray[1]);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                throw new DukeArrayIndexOutOfBoundsException("Please enter an integer after " + "'"
+                        + inputArray[0] + "'");
+            }
         }
 
         String description = reformString(inputArray, 1, inputArray.length - 1);
@@ -65,7 +71,8 @@ public class Parser {
     }
 
     private String getExceptionMessage() {
-        return "Invalid user input.\n" + "Permissible command: [list], [done], [todo], [deadline], [event], [bye]";
+        return "Invalid user input.\n"
+                + "Permissible command: [list], [done], [todo], [deadline], [event], [undo], [bye]";
     }
 
     private Command getCommand(String command, String position) {
@@ -78,14 +85,17 @@ public class Parser {
             } else {
                 throw new DukeIllegalArgumentException("Please enter either 'done' or 'delete'");
             }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            throw new DukeIllegalArgumentException("Please enter an integer after " + "'" + command + "'");
         } catch (NumberFormatException e) {
             throw new DukeIllegalArgumentException("Input is not an integer. "
                     + "Please enter an integer after " + "'" + command + "'");
         } catch (IndexOutOfBoundsException e) {
-            throw new DukeIllegalArgumentException("Please input a number between 1 and "
-                    + list.size() + " (inclusive)");
+            if (list.isEmpty()) {
+                throw new DukeArrayIndexOutOfBoundsException("The task list empty. You cannot perform " + command
+                        + " on it.");
+            } else {
+                throw new DukeIllegalArgumentException("Please input a number between 1 and "
+                        + list.size() + " (inclusive)");
+            }
         }
     }
 
