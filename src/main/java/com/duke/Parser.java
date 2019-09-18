@@ -65,9 +65,7 @@ public class Parser {
     }
 
     private String getExceptionMessage() {
-        String secondLine = "Permissible command: [list], [done], [todo], [deadline], [event], [bye]";
-        return "Illegal user input.\n"
-                + String.format("%1$" + (secondLine.length() + 5) + "s", secondLine);
+        return "Invalid user input.\n" + "Permissible command: [list], [done], [todo], [deadline], [event], [bye]";
     }
 
     private Command getCommand(String command, String position) {
