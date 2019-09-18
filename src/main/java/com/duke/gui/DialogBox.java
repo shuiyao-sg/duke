@@ -10,20 +10,23 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 import java.util.Collections;
 
 /**
- * An example of a custom control using FXML.
- * This control represents a dialog box consisting of an ImageView to represent the speaker's face and a label
- * containing text from the speaker.
+ * An example of a custom control using FXML. This control represents a dialog box consisting of an ImageView to
+ * represent the speaker's face and a label containing text from the speaker.
  */
 public class DialogBox extends HBox {
     @FXML
     private Label dialog;
     @FXML
     private ImageView displayPicture;
+    @FXML
+    private Circle avatar;
 
     private DialogBox(String text, Image img) {
         try {
@@ -36,7 +39,7 @@ public class DialogBox extends HBox {
         }
 
         dialog.setText(text);
-        displayPicture.setImage(img);
+        // displayPicture.setImage(img);
     }
 
     /**
@@ -52,12 +55,14 @@ public class DialogBox extends HBox {
     static DialogBox getUserDialog(String text, Image img) {
         var db = new DialogBox(text, img);
         db.dialog.setStyle("-fx-background-color: #91ED61; -fx-background-radius: 10;");
+        db.avatar.setFill(new ImagePattern(img));
         return db;
     }
 
     static DialogBox getDukeDialog(String text, Image img) {
         var db = new DialogBox(text, img);
         db.dialog.setStyle("-fx-background-color: white; -fx-background-radius: 10;");
+        db.avatar.setFill(new ImagePattern(img));
         db.flip();
         return db;
     }

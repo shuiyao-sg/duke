@@ -59,7 +59,7 @@ public class MainWindow extends AnchorPane {
     }
 
     public void greet() {
-        String greet = "Hi I'm Duke! Nice to meet you!";
+        String greet = "Hi I'm Bing Bing! Nice to meet you!";
         dialogContainer.getChildren().add(DialogBox.getDukeDialog(greet, dukeImage));
     }
 }
