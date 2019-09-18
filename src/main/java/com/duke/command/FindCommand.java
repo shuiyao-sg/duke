@@ -2,8 +2,6 @@ package com.duke.command;
 
 import com.duke.TaskList;
 
-import java.io.IOException;
-
 /**
  * Encapsulates a find command to search for a keyword.
  */
@@ -15,15 +13,20 @@ public class FindCommand extends Command {
     /**
      * Constructs a FindCommand object.
      *
-     * @param list input task list.
-     * @param text text to find specified by user input.
+     * @param list Input task list.
+     * @param text Text to find specified by user input.
      */
     public FindCommand(TaskList list, String text) {
         super(list);
         this.text = text;
     }
 
-    public String execute() throws IOException {
+    /**
+     * Executes the command.
+     *
+     * @return Output shown to user.
+     */
+    public String execute() {
         TaskList taskList = this.list.query(this.text);
         return FIND_MESSAGE + "\n" + taskList.toString();
     }

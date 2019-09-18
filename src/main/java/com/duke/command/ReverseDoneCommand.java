@@ -11,18 +11,16 @@ import java.io.IOException;
 public class ReverseDoneCommand extends Command {
     private static final String TASK_NOT_DONE_MESSAGE = "Nice! I've marked this task as not done:";
 
-    private int index;
     private Storage storage;
 
     /**
      * Constructs a ReverseDoneCommand object.
      *
-     * @param list  input task list.
-     * @param index index from user input.
+     * @param list  Input task list.
+     * @param index Index from user input.
      */
     public ReverseDoneCommand(TaskList list, int index) {
         super(list);
-        this.index = index;
         super.task = this.list.getTask(index);
         this.storage = new Storage(FILE_PATH);
     }
@@ -30,8 +28,8 @@ public class ReverseDoneCommand extends Command {
     /**
      * Executes the command.
      *
-     * @return output shown to user.
-     * @throws IOException throws IOException when file not found.
+     * @return Output shown to user.
+     * @throws IOException If file is not found or cannot be read.
      */
     public String execute() throws IOException {
         String initialTask = super.task.toString();

@@ -18,8 +18,8 @@ public class ToDoCommand extends Command {
     /**
      * Constructs a ToDoCommand object.
      *
-     * @param list task list.
-     * @param des  task description.
+     * @param list Task list.
+     * @param des  Task description.
      */
     public ToDoCommand(TaskList list, String des) {
         super(list);
@@ -30,8 +30,8 @@ public class ToDoCommand extends Command {
     /**
      * Executes the command.
      *
-     * @return output shown to user.
-     * @throws IOException throws IOException when file not found.
+     * @return Output shown to user.
+     * @throws IOException If file is not found or cannot be read.
      */
     public String execute() throws IOException {
         super.list.addTask(super.task);

@@ -10,7 +10,8 @@ import java.io.IOException;
  */
 public class Duke {
 
-    private static final String FILE_PATH = "src/data/duke.txt";
+    //private static final String FILE_PATH = "src/data/duke.txt";
+    private static final String FILE_PATH = "data/duke.txt";
     private static Parser parser;
     static RecycleBin recycleBin;
     private Storage storage;

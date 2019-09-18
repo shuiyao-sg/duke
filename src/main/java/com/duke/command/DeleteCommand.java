@@ -19,8 +19,8 @@ public class DeleteCommand extends Command {
     /**
      * Constructs a DeleteCommand object.
      *
-     * @param list  input task list.
-     * @param index index from user input.
+     * @param list  Input task list.
+     * @param index Index from user input.
      */
     public DeleteCommand(TaskList list, int index) {
         super(list);
@@ -32,8 +32,8 @@ public class DeleteCommand extends Command {
     /**
      * Executes the command.
      *
-     * @return output shown to user.
-     * @throws IOException throws IOException when file not found.
+     * @return Output shown to user.
+     * @throws IOException If file is not found or cannot be read.
      */
     public String execute() throws IOException {
         super.list.deleteTask(index);

@@ -14,21 +14,19 @@ public class InsertCommand extends Command {
     private int position;
     private Storage storage;
 
-    /**
-     * Constructs an InsertCommand object.
-     *
-     * @param position the position where the task is inserted.
-     * @param taskList the task list to be modified.
-     * @param task     the task to be inserted.
-     */
-    public InsertCommand(int position, TaskList taskList, Task task) {
+    InsertCommand(int position, TaskList taskList, Task task) {
         super(taskList);
         super.task = task;
         this.position = position;
         this.storage = new Storage(FILE_PATH);
     }
 
-    @Override
+    /**
+     * Executes the command.
+     *
+     * @return Output shown to user.
+     * @throws IOException If file is not found or cannot be read.
+     */
     public String execute() throws IOException {
         super.list.addTask(position, super.task);
         this.storage.insertText(position, super.task.toString());

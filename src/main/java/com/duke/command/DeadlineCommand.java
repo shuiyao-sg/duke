@@ -17,8 +17,8 @@ public class DeadlineCommand extends Command {
     /**
      * Constructs a DeadlineCommand object.
      *
-     * @param list  input task list.
-     * @param input task description and date specified by user input.
+     * @param list  Input task list.
+     * @param input Task description and date specified by user input.
      */
     public DeadlineCommand(TaskList list, String input) {
         super(list);
@@ -29,8 +29,8 @@ public class DeadlineCommand extends Command {
     /**
      * Executes the command.
      *
-     * @return output shown to user.
-     * @throws IOException throws IOException when file not found.
+     * @return Output shown to user.
+     * @throws IOException If file is not found or cannot be read.
      */
     public String execute() throws IOException {
         super.list.addTask(super.task);

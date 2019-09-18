@@ -21,7 +21,7 @@ public class Storage {
     /**
      * Constructs a Storage object.
      *
-     * @param filePath file path.
+     * @param filePath File path.
      */
     public Storage(String filePath) {
         this.filePath = filePath;
@@ -30,7 +30,7 @@ public class Storage {
     /**
      * Appends text to the back of a file.
      *
-     * @param input text to append.
+     * @param input Text to append.
      * @throws DukeFileNotFoundException if file not found.
      * @throws IOException               if failed to read or write to file.
      */
@@ -140,42 +140,24 @@ public class Storage {
     }
 
     /**
-     * Prints the file input.
-     */
-    public void printFile() {
-        try {
-            Scanner fileScanner = new Scanner(new File(filePath));
-            String heading = "You have these remaining tasks: ";
-            System.out.printf("%1$" + (heading.length() + 5) + "s\n", heading);
-
-            while (fileScanner.hasNextLine()) {
-                String nextLineOfFile = fileScanner.nextLine().trim();
-                System.out.printf("%1$" + (nextLineOfFile.length() + 5) + "s\n", nextLineOfFile);
-            }
-        } catch (FileNotFoundException e) {
-            return;
-        }
-    }
-
-    /**
      * Gets file content.
      *
      * @return String representation of file content.
      */
     public String getFileContent() {
+        File file = new File(filePath);
+
         try {
-            Scanner fileScanner = new Scanner(new File(filePath));
+            Scanner fileScanner = new Scanner(file);
             StringBuilder output = new StringBuilder("You have these remaining tasks:\n");
             while (fileScanner.hasNextLine()) {
                 output.append(fileScanner.nextLine().trim() + "\n");
             }
             return String.valueOf(output);
         } catch (FileNotFoundException e) {
-            try {
-                FileWriter fw = new FileWriter(filePath);
-                fw.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
+            File dir = new File(file.getParent());
+            if(!dir.exists()) {
+                dir.mkdirs();
             }
             return "Task record " + filePath + " not found by Duke. New task list generated.";
         }

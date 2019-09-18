@@ -10,14 +10,13 @@ import java.io.IOException;
  * Encapsulates an undo command to undo previous command.
  */
 public class UndoCommand extends Command {
-    private String undoMessage;
     private RecycleBin recycleBin;
 
     /**
      * Constructs an UndoCommand object.
      *
-     * @param taskList   the task list to be modified.
-     * @param recycleBin the recycle bin which record historical commands and deleted tasks.
+     * @param taskList   The task list to be modified.
+     * @param recycleBin The recycle bin which record historical commands and deleted tasks.
      */
     public UndoCommand(TaskList taskList, RecycleBin recycleBin) {
         super(taskList);
@@ -32,7 +31,6 @@ public class UndoCommand extends Command {
 
     private String undoLastCommand() throws IOException {
         String commandString = recycleBin.getCommandString();
-        this.undoMessage = commandString;
         String[] tempArray = commandString.split(" ");
         String command = tempArray[0];
 
@@ -49,7 +47,7 @@ public class UndoCommand extends Command {
             Command reverseDoneCommand = new ReverseDoneCommand(super.list, index);
             reverseDoneCommand.execute();
         }
-        return "Undo last command: " + undoMessage;
+        return "Undo last command: " + commandString;
     }
 
     @Override

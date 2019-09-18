@@ -65,6 +65,10 @@ public class TaskList {
         return this.listBody.size();
     }
 
+    public boolean isEmpty() {
+        return this.listBody.isEmpty();
+    }
+
     /**
      * Generates a task list with each task containing specified text.
      *
