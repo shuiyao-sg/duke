@@ -36,11 +36,14 @@ public class Deadline extends Task {
             by = newInputArray[1].trim();
             return new Deadline(des, by);
         } catch (ArrayIndexOutOfBoundsException e) {
-            throw new DukeIllegalArgumentException("Invalid input for deadline. "
-                    + "Please key in 'deadline <task> /by 'dd/mm/yyyy' \\'");
+            throw new DukeIllegalArgumentException("Invalid input for deadline.\n"
+                    + "You may key in one of the following:\n"
+                    + "deadline <task> /by [dd/mm/yyyy]\n"
+                    + "deadline <task> /by [dd/mm/yyyy hhmm]");
         } catch (NumberFormatException e) {
-            throw new DukeIllegalArgumentException("Illegal input for time. Please key in the format "
-                    + "'DD/MM/YYYY'[SPACE]'hhmm'");
+            throw new DukeIllegalArgumentException("Invalid input for time.\n"
+                    + "Please key in the format:\n"
+                    + "dd/mm/yyyy hhmm");
         }
 
     }

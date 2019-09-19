@@ -36,11 +36,16 @@ public class Event extends Task {
             at = newInputArray[1].trim();
             return new Event(des, at);
         } catch (ArrayIndexOutOfBoundsException e) {
-            throw new DukeIllegalArgumentException("Illegal input for event. "
-                    + "Please key in 'event <task> /at <time>'");
+            throw new DukeIllegalArgumentException("Invalid input for event.\n"
+                    + "You may key in one of the following:\n"
+                    + "event <task> /at [dd/mm/yyyy]\n"
+                    + "event <task> /at [dd/mm/yyyy hhmm]\n"
+                    + "event <task> /at [dd/mm/yyyy hhmm-hhmm]");
         } catch (NumberFormatException e) {
-            throw new DukeIllegalArgumentException("Illegal input for time. Please key in the format "
-                    + "'DD/MM/YYYY'[SPACE]'hhmm-hhmm'");
+            throw new DukeIllegalArgumentException("Invalid input for time.\n"
+                    + "You may try one of these formats:\n"
+                    + "dd/mm/yyyy hhmm\n"
+                    + "dd/mm/yyyy hhmm-hhmm");
         }
     }
 

@@ -2,6 +2,10 @@
 
 [1. Introduction](#1-introduction)
 
+>[1.1 Overview](#11-overview)
+
+>[1.2 Command format](#12-command-format)
+
 [2. Features](#2-features)
 
 >[2.1 Adding a general task](#21-adding-a-general-task-todo)
@@ -21,8 +25,6 @@
 >[2.8 Undoing last command](#28-undoing-last-command-undo)
 
 >[2.9 Exiting](#29-exiting-bye)
-
-[3. Supplementary note](#3-supplementary-note)
 
 
 ## 1. Introduction

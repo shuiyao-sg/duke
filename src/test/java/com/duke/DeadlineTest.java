@@ -14,11 +14,10 @@ public class DeadlineTest {
             assertEquals("[D]" + "[" + "N" + "]" + " return book by: 2 MARCH 2019", Deadline.genDeadline(input));
             fail();
         } catch (DukeIllegalArgumentException e) {
-            String horizontalLine = " " + " " + " " + " "
-                    + "____________________________________________________________";
-            String message = "Invalid input for deadline. " + "Please key in 'deadline <task> /by <time>'";
-            String error = horizontalLine + "\n" + String.format("%1$" + (message.length() + 5) + "s\n",
-                    message) + horizontalLine + "\n";
+            String error = "Invalid input for deadline.\n"
+                    + "You may key in one of the following:\n"
+                    + "deadline <task> /by [dd/mm/yyyy]\n"
+                    + "deadline <task> /by [dd/mm/yyyy hhmm]";
             assertEquals(error, e.getMessage());
         }
     }

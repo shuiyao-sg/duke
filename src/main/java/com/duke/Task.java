@@ -91,7 +91,7 @@ public class Task {
             String[] eventContentArray = taskContent.split("at:");
             return new Event(eventContentArray[0].trim(), eventContentArray[1].trim());
         default:
-            throw new DukeIllegalArgumentException("Illegal input from file");
+            throw new DukeIllegalArgumentException("Invalid input from file");
         }
     }
 

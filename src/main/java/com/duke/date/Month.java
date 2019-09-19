@@ -58,7 +58,8 @@ public enum Month {
         case 12:
             return DECEMBER;
         default:
-            throw new DukeIllegalArgumentException("Invalid input for month");
+            throw new DukeIllegalArgumentException("Invalid input for month."
+                    + "Please enter a number between 1 and 12 (inclusive)");
         }
     }
 
@@ -88,8 +89,8 @@ public enum Month {
         } else if (month.equalsIgnoreCase("DECEMBER")) {
             return DECEMBER;
         } else {
-            assert false : "Invalid input format for month. Encountered: " + month;
-            throw new DukeIllegalArgumentException("Invalid input format for month");
+            throw new DukeIllegalArgumentException("Invalid input format for month."
+                    + "Please enter a valid month in English eg. January");
         }
     }
 

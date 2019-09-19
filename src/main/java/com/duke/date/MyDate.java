@@ -65,12 +65,15 @@ public class MyDate {
         String[] dateStringArray = {array[0]};
         int[] outputArray = genDateArrayWithoutTimeFromUserInput(dateStringArray);
 
-        int fromHour = Integer.parseInt(array[1].substring(0, 2));
-        int fromMin = Integer.parseInt(array[1].substring(2));
-        outputArray[3] = fromHour;
-        outputArray[4] = fromMin;
-
-        return outputArray;
+        try {
+            int fromHour = Integer.parseInt(array[1].substring(0, 2));
+            int fromMin = Integer.parseInt(array[1].substring(2));
+            outputArray[3] = fromHour;
+            outputArray[4] = fromMin;
+            return outputArray;
+        } catch (StringIndexOutOfBoundsException e) {
+            throw new DukeIllegalArgumentException("Invalid input for time. Please key in time in the format 'hhmm'");
+        }
     }
 
     private static int[] genDateArrayWithTimeDurationFromUserInput(String[] array) {
@@ -81,12 +84,16 @@ public class MyDate {
 
         String[] tempArray = {array[0], timeArray[0]};
         int[] outputArray = genDateArrayWithTimePointFromUserInput(tempArray);
-        int toHour = Integer.parseInt(timeArray[1].substring(0, 2));
-        int toMin = Integer.parseInt(timeArray[1].substring(2));
-        outputArray[5] = toHour;
-        outputArray[6] = toMin;
 
-        return outputArray;
+        try {
+            int toHour = Integer.parseInt(timeArray[1].substring(0, 2));
+            int toMin = Integer.parseInt(timeArray[1].substring(2));
+            outputArray[5] = toHour;
+            outputArray[6] = toMin;
+            return outputArray;
+        } catch (StringIndexOutOfBoundsException e) {
+            throw new DukeIllegalArgumentException("Invalid input for time. Please key in time in the format 'hhmm'");
+        }
     }
 
     private static int[] genDateArrayWithTimeFromUserInput(String[] array) {
@@ -129,12 +136,15 @@ public class MyDate {
         String[] dateArray = {array[0], array[1], array[2]};
         int[] outputArray = genDateArrayWithoutTimeFromFileInput(dateArray);
 
-        int fromHour = Integer.parseInt(array[3].substring(0, 2));
-        int fromMin = Integer.parseInt(array[3].substring(3));
-        outputArray[3] = fromHour;
-        outputArray[4] = fromMin;
-
-        return outputArray;
+        try {
+            int fromHour = Integer.parseInt(array[3].substring(0, 2));
+            int fromMin = Integer.parseInt(array[3].substring(3));
+            outputArray[3] = fromHour;
+            outputArray[4] = fromMin;
+            return outputArray;
+        } catch (StringIndexOutOfBoundsException e) {
+            throw new DukeIllegalArgumentException("Invalid input for time. Please key in time in the format 'hhmm'");
+        }
     }
 
     private static int[] genDateArrayWithTimeDurationFromFileInput(String[] array) {
@@ -142,12 +152,16 @@ public class MyDate {
 
         String[] tempArray = {array[0], array[1], array[2], array[3]};
         int[] outputArray = genDateArrayWithTimePointFromFileInput(tempArray);
-        int toHour = Integer.parseInt(array[5].substring(0, 2));
-        int toMin = Integer.parseInt(array[5].substring(3));
-        outputArray[5] = toHour;
-        outputArray[6] = toMin;
 
-        return outputArray;
+        try {
+            int toHour = Integer.parseInt(array[5].substring(0, 2));
+            int toMin = Integer.parseInt(array[5].substring(3));
+            outputArray[5] = toHour;
+            outputArray[6] = toMin;
+            return outputArray;
+        } catch (StringIndexOutOfBoundsException e) {
+            throw new DukeIllegalArgumentException("Invalid input for time. Please key in time in the format 'hhmm'");
+        }
     }
 
     private static int[] genDateArrayFromFileInput(String[] array) {
