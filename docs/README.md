@@ -33,7 +33,7 @@ Duke is a personal assistant chatbot that helps a person to keep track of tasks.
 It is optimized for those who prefer to work with a Command Line Interface (CLI) while still having the benefits of a
 Graphical User Interface (GUI).
 
-###1.2 Command format
+### 1.2 Command format
 - < a > means a can be replaced by user input. < > should be removed from user input.
 
 - [ a ] means a can be replaced by user input but with exactly the same format. [ ] should be removed from user input.
