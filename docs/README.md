@@ -26,9 +26,19 @@
 
 
 ## 1. Introduction
+### 1.1 Overview
 Duke is a personal assistant chatbot that helps a person to keep track of tasks.
 It is optimized for those who prefer to work with a Command Line Interface (CLI) while still having the benefits of a
 Graphical User Interface (GUI).
+
+###1.2 Command format
+- < a > means a can be replaced by user input. < > should be removed from user input.
+
+- "a" means a can be replaced by user input but with exactly the same format. " " should be removed from user input.
+
+- [ a ] means a is optional. [ ] should be removed from user input.
+
+- { a } { b } means either a or b but not both. { } should be removed from user input.
 
 ## 2. Features
 ### 2.1 Adding a general task: `todo`
@@ -169,12 +179,3 @@ And status of task 2 should be [ N ]
 Exits the program.
 
 Format: `bye`
-
-## 3. Supplementary note
-1. < a > means a can be replaced by user input.
-
-2. "a" means a can be replaced by user input but with exactly the same format.
-
-3. [ a ] means a is optional.
-
-4. { a } { b } means either a or b but not both.
