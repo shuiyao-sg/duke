@@ -34,13 +34,13 @@ It is optimized for those who prefer to work with a Command Line Interface (CLI)
 Graphical User Interface (GUI).
 
 ### 1.2 Command format
-- < a > means a can be replaced by user input. < > should be removed from user input.
+    < a > means a can be replaced by user input. < > should be removed from user input.
 
-- [ a ] means a can be replaced by user input but with exactly the same format. [ ] should be removed from user input.
+    [ a ] means a can be replaced by user input but with exactly the same format. [ ] should be removed from user input.
 
-- ( a ) means a is optional. ( ) should be removed from user input.
+    ( a ) means a is optional. ( ) should be removed from user input.
 
-- a ^ b means user input can be either a or b but not both.
+    a ^ b means user input can be either a or b but not both.
 
 ## 2. Features
 ### 2.1 Adding a general task: `todo`
