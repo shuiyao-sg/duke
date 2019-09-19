@@ -34,11 +34,11 @@ Graphical User Interface (GUI).
 ###1.2 Command format
 - < a > means a can be replaced by user input. < > should be removed from user input.
 
-- "a" means a can be replaced by user input but with exactly the same format. " " should be removed from user input.
+- [ a ] means a can be replaced by user input but with exactly the same format. [ ] should be removed from user input.
 
-- [ a ] means a is optional. [ ] should be removed from user input.
+- ( a ) means a is optional. ( ) should be removed from user input.
 
-- { a } { b } means either a or b but not both. { } should be removed from user input.
+- a ^ b means user input can be either a or b but not both.
 
 ## 2. Features
 ### 2.1 Adding a general task: `todo`
@@ -61,7 +61,7 @@ Expected outcome:
 ### 2.2 Adding a task with deadline: *deadline*
 Adds a task with deadline to the task list.
 
-Format: `deadline <task> /by "dd/mm/yyyy" ["hhmm"]`
+Format: `deadline <task> /by [dd/mm/yyyy] ([hhmm])`
 
 Example of usage:
 
@@ -78,7 +78,7 @@ Expected outcome:
 ### 2.3 Adding an event: *event*
 Adds an event happening at particular time (or time period) to the task list.
 
-Format: `event <task> /at "dd/mm/yyyy" [{"hhmm"} {"hhmm-hhmm"}]`
+Format: `event <task> /at [dd/mm/yyyy] ([hhmm] ^ [hhmm-hhmm])`
 
 Example of usage:
 

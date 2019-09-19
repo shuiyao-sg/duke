@@ -16,7 +16,7 @@ public class DeadlineTest {
         } catch (DukeIllegalArgumentException e) {
             String horizontalLine = " " + " " + " " + " "
                     + "____________________________________________________________";
-            String message = "Illegal input for deadline. " + "Please key in 'deadline <task> /by <time>'";
+            String message = "Invalid input for deadline. " + "Please key in 'deadline <task> /by <time>'";
             String error = horizontalLine + "\n" + String.format("%1$" + (message.length() + 5) + "s\n",
                     message) + horizontalLine + "\n";
             assertEquals(error, e.getMessage());
