@@ -2,3 +2,4 @@
 [T][N] read book 2
 [E][N] project at: 2 AUGUST 2016 16:00 to 19:00
 [E][N] project at: 2 SEPTEMBER 2016 15:00 to 16:00
+[T][N] read
