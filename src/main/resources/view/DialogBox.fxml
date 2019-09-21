@@ -14,7 +14,7 @@
 
         <VBox alignment="CENTER">
             <Label prefHeight="8.0"/>
-            <Label fx:id="dialog" maxHeight="1.7976931348623157E308" minWidth="50.0" text="Label">
+            <Label fx:id="dialog" maxHeight="1.7976931348623157E308" minWidth="50.0" maxWidth="400" text="Label" wrapText="true">
                 <font>
                     <Font name="Arial" size="13.0"/>
                 </font>

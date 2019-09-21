@@ -1,7 +1,7 @@
 package com.duke;
 
 import com.duke.command.Command;
-import com.duke.exceptions.DukeException;
+import com.duke.exception.DukeException;
 
 import java.io.IOException;
 

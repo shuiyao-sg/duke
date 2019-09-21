@@ -1,7 +1,7 @@
 package com.duke.command;
 
 import com.duke.RecycleBin;
-import com.duke.Task;
+import com.duke.task.Task;
 import com.duke.TaskList;
 
 import java.io.IOException;

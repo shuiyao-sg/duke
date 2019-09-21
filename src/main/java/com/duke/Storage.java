@@ -1,6 +1,7 @@
 package com.duke;
 
-import com.duke.exceptions.DukeFileNotFoundException;
+import com.duke.exception.DukeFileNotFoundException;
+import com.duke.task.Task;
 
 import java.io.File;
 import java.io.FileNotFoundException;

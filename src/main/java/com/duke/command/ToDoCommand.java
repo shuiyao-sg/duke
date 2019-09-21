@@ -2,7 +2,7 @@ package com.duke.command;
 
 import com.duke.Storage;
 import com.duke.TaskList;
-import com.duke.ToDo;
+import com.duke.task.ToDo;
 
 import java.io.IOException;
 

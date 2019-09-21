@@ -1,4 +1,4 @@
-package com.duke.exceptions;
+package com.duke.exception;
 
 /**
  * Represents ArrayIndexOutOfBoundsException for Duke.

@@ -10,8 +10,8 @@ import com.duke.command.FindCommand;
 import com.duke.command.ListCommand;
 import com.duke.command.ToDoCommand;
 import com.duke.command.UndoCommand;
-import com.duke.exceptions.DukeArrayIndexOutOfBoundsException;
-import com.duke.exceptions.DukeIllegalArgumentException;
+import com.duke.exception.DukeArrayIndexOutOfBoundsException;
+import com.duke.exception.DukeIllegalArgumentException;
 
 /**
  * Encapsulates a parser to deal with making sense of the user command.
@@ -57,17 +57,18 @@ public class Parser {
         }
 
         String description = reformString(inputArray, 1, inputArray.length - 1);
-        if (inputArray[0].equals("todo")) {
+        switch (inputArray[0]) {
+        case "todo":
             return new ToDoCommand(this.list, description);
-        } else if (inputArray[0].equals("deadline")) {
+        case "deadline":
             return new DeadlineCommand(this.list, description);
-        } else if (inputArray[0].equals("event")) {
+        case "event":
             return new EventCommand(this.list, description);
-        } else if (inputArray[0].equals("find")) {
+        case "find":
             return new FindCommand(this.list, description);
+        default:
+            throw new DukeIllegalArgumentException(getExceptionMessage());
         }
-
-        throw new DukeIllegalArgumentException(getExceptionMessage());
     }
 
     private String getExceptionMessage() {

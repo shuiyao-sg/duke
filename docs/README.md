@@ -63,7 +63,7 @@ Expected outcome:
 ### 2.2 Adding a task with deadline: *deadline*
 Adds a task with deadline to the task list.
 
-Format: `deadline <task> /by [dd/mm/yyyy] ([hhmm])`
+Format: `deadline <task> /by [dd/HH/yyyy] ([HHmm])`
 
 Example of usage:
 
@@ -73,24 +73,24 @@ Expected outcome:
 
 `Got it. I've added this task:`
 
-`[D][N] return book 1 by: 20 SEPTEMBER 2019 15:00`
+`[D][N] return book 1 by: 20 September 2019 15:00`
 
 `Now you have 2 tasks in the list.`
 
 ### 2.3 Adding an event: *event*
 Adds an event happening at particular time (or time period) to the task list.
 
-Format: `event <task> /at [dd/mm/yyyy] ([hhmm] ^ [hhmm-hhmm])`
+Format: `event <task> /at [dd/MM/yyyy] ([HHmm] ^ [HHmm HHmm])`
 
 Example of usage:
 
-`event project meeting /at 21/09/2019 1500-1600`
+`event project meeting /at 21/09/2019 1500 1600`
 
 Expected outcome:
 
 `Got it. I've added this task:`
 
-`[E][N] project meeting at: 21 SEPTEMBER 2019 15:00 to 16:00`
+`[E][N] project meeting at: 21 September 2019 15:00 to 16:00`
 
 `Now you have 3 tasks in the list.`
 
@@ -109,9 +109,9 @@ Expected outcome:
 
 `1.[T][N] read book 1`
 
-`2.[D][N] return book 1 by: 20 SEPTEMBER 2019 15:00`
+`2.[D][N] return book 1 by: 20 September 2019 15:00`
 
-`3.[E][N] project meeting at: 21 SEPTEMBER 2019 15:00 to 16:00`
+`3.[E][N] project meeting at: 21 September 2019 15:00 to 16:00`
 
 ### 2.5 Marking done: *done*
 Marks a task as done.
@@ -158,7 +158,7 @@ Expected outcome:
 
 `Here are the matching tasks in your list:`
 
-`1.[D][N] return book 1 by: 20 SEPTEMBER 2019 15:00`
+`1.[D][N] return book 1 by: 20 September 2019 15:00`
 
 ### 2.8 Undoing last command: *undo*
 Revokes last command.

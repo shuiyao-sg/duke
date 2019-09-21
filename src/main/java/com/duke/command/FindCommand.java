@@ -7,6 +7,7 @@ import com.duke.TaskList;
  */
 public class FindCommand extends Command {
     private static final String FIND_MESSAGE = "Here are the matching tasks in your list:";
+    private static final String FAIL_MESSAGE = "Sorry. I cannot find any matching results in the task list";
 
     private String text;
 
@@ -28,6 +29,6 @@ public class FindCommand extends Command {
      */
     public String execute() {
         TaskList taskList = this.list.query(this.text);
-        return FIND_MESSAGE + "\n" + taskList.toString();
+        return taskList.isEmpty() ? FAIL_MESSAGE : FIND_MESSAGE + "\n" + taskList.toString();
     }
 }
