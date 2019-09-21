@@ -2,7 +2,7 @@ package com.duke;
 
 import com.duke.exceptions.DukeIllegalArgumentException;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
@@ -11,9 +11,9 @@ import java.time.format.DateTimeParseException;
  */
 public class Deadline extends Task {
 
-    protected LocalDateTime by;
-    private final DateTimeFormatter FORMAT_USER_INPUT_WITH_TIME = DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
-    private final DateTimeFormatter FORMAT_FILE_STRING = DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm");
+    private LocalDate date;
+    private final DateTimeFormatter FORMAT_USER_INPUT_DATE = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private final DateTimeFormatter FORMAT_FILE_DATE_STRING = DateTimeFormatter.ofPattern("dd MMMM yyyy");
     private final static String INVALID_INPUT_ERROR_MESSAGE = "Invalid input for deadline.\n"
             + "You may key in one of the following with valid values:\n"
             + "deadline <task> /by [dd/MM/yyyy]\n"
@@ -23,28 +23,22 @@ public class Deadline extends Task {
      * Constructs a Deadline object.
      *
      * @param description Task description.
-     * @param by          Deadline date.
+     * @param date        Deadline date.
      */
-    private Deadline(String description, String by) {
+    protected Deadline(String description, String date) {
         super(description);
-        //this.by = MyDate.genMyDate(by);
-        try {
-            this.by = LocalDateTime.parse(by, FORMAT_USER_INPUT_WITH_TIME);
-        } catch (DateTimeParseException e) {
-            this.by = LocalDateTime.parse(by + " 2359", FORMAT_USER_INPUT_WITH_TIME);
-        }
+        this.date = LocalDate.parse(date, FORMAT_USER_INPUT_DATE);
     }
 
-    private Deadline(String description, String by, boolean isFromFile) {
+    Deadline(String description, String date, boolean isFromFile) {
         super(description);
         if (isFromFile) {
-            this.by = LocalDateTime.parse(by, FORMAT_FILE_STRING);
+            this.date = LocalDate.parse(date, FORMAT_FILE_DATE_STRING);
         } else {
             throw new DukeIllegalArgumentException("The input string is not from file");
         }
 
     }
-
 
     /**
      * Generates a Deadline task from input String.
@@ -59,7 +53,15 @@ public class Deadline extends Task {
         try {
             des = newInputArray[0].trim();
             by = newInputArray[1].trim();
-            return new Deadline(des, by);
+            String[] dateTimeArray = by.split(" ");
+
+            if (dateTimeArray.length == 1) {
+                return new Deadline(des, by);
+            } else if (dateTimeArray.length == 2) {
+                return new DeadlineWithTime(des, dateTimeArray[0], dateTimeArray[1]);
+            } else {
+                throw new DukeIllegalArgumentException("Invalid input for deadline");
+            }
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new DukeIllegalArgumentException(INVALID_INPUT_ERROR_MESSAGE);
         } catch (DateTimeParseException e) {
@@ -72,11 +74,20 @@ public class Deadline extends Task {
     }
 
     static Deadline genDeadlineFromFile(String description, String by) {
-        return new Deadline(description, by, true);
+        String[] dateTimeArray = by.split(" ");
+        switch (dateTimeArray.length) {
+        case 3:
+            return new Deadline(description, by, true);
+        case 4:
+            return new DeadlineWithTime(description, dateTimeArray[0] + " " + dateTimeArray[1] + " "
+                    + dateTimeArray[2], dateTimeArray[3], true);
+        default:
+            throw new DukeIllegalArgumentException("Invalid input for event from file");
+        }
     }
 
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " by: " + by.format(FORMAT_FILE_STRING);
+        return "[D]" + super.toString() + " by: " + date.format(FORMAT_FILE_DATE_STRING);
     }
 }

@@ -11,14 +11,10 @@ import java.time.format.DateTimeParseException;
  */
 public class Event extends Task {
 
-    //private MyDate at;
-    protected LocalDate date;
-    //protected LocalDateTime start;
-    //protected LocalDateTime end;
-    protected final DateTimeFormatter FORMAT_USER_INPUT_DATE = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    //private final DateTimeFormatter FORMAT_USER_INPUT_DATE_TIME = DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
-    protected static final DateTimeFormatter FORMAT_FILE_DATE_STRING = DateTimeFormatter.ofPattern("dd MMMM yyyy");
-    // private final DateTimeFormatter FORMAT_FILE_STRING = DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm");
+    private LocalDate date;
+
+    private final DateTimeFormatter FORMAT_USER_INPUT_DATE = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static final DateTimeFormatter FORMAT_FILE_DATE_STRING = DateTimeFormatter.ofPattern("dd MMMM yyyy");
     private final static String INVALID_INPUT_ERROR_MESSAGE = "Invalid input for event.\n"
             + "You may key in one of the following:\n"
             + "event <task> /at [dd/MM/yyyy]\n"
@@ -29,7 +25,7 @@ public class Event extends Task {
      * Constructs an Event object.
      *
      * @param description Task description.
-     * @param at          Event date and time represented by String.
+     * @param date        Event date represented by String.
      */
     Event(String description, String date) {
         super(description);
@@ -58,14 +54,11 @@ public class Event extends Task {
         try {
             des = newInputArray[0].trim();
             at = newInputArray[1].trim();
-
             String[] dateTimeArray = at.split(" ");
 
             if (dateTimeArray.length == 1) {
                 return new Event(des, at);
             }
-
-//            String[] timeArray = dateTimeArray[1].split("-");
 
             if (dateTimeArray.length == 2) {
                 return new EventWithStartTime(des, dateTimeArray[0], dateTimeArray[1]);
@@ -77,11 +70,6 @@ public class Event extends Task {
 
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new DukeIllegalArgumentException(INVALID_INPUT_ERROR_MESSAGE);
-//        } catch (NumberFormatException e) {
-//            throw new DukeIllegalArgumentException("Invalid input for time.\n"
-//                    + "You may try one of these formats:\n"
-//                    + "dd/mm/yyyy hhmm\n"
-//                    + "dd/mm/yyyy hhmm-hhmm");
         } catch (DateTimeParseException e) {
             if (e.getMessage().contains("Invalid value")) {
                 throw new DukeIllegalArgumentException(e.getMessage());

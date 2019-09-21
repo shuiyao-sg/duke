@@ -87,7 +87,6 @@ public class Task {
         case 'D':
             String[] deadlineContentArray = taskContent.split("by:");
             return Deadline.genDeadlineFromFile(deadlineContentArray[0].trim(), deadlineContentArray[1].trim());
-
         case 'E':
             String[] eventContentArray = taskContent.split("at:");
             return Event.genEventFromFile(eventContentArray[0].trim(), eventContentArray[1].trim());
