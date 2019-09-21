@@ -1,5 +1,7 @@
 package com.duke;
 
+import com.duke.task.Task;
+
 import java.util.Stack;
 
 public class RecycleBin {

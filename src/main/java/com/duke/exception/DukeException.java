@@ -1,4 +1,4 @@
-package com.duke.exceptions;
+package com.duke.exception;
 
 /**
  * Represents DukeException in general.

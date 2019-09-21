@@ -1,6 +1,6 @@
-package com.duke;
+package com.duke.task;
 
-import com.duke.exceptions.DukeIllegalArgumentException;
+import com.duke.exception.DukeIllegalArgumentException;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -8,8 +8,8 @@ import java.time.format.DateTimeFormatter;
 public class EventWithStartTime extends Event {
 
     private LocalTime startTime;
-    final DateTimeFormatter FORMAT_USER_INPUT_TIME = DateTimeFormatter.ofPattern("HHmm");
-    final DateTimeFormatter FORMAT_FILE_TIME_STRING = DateTimeFormatter.ofPattern("HH:mm");
+    static final DateTimeFormatter FORMAT_USER_INPUT_TIME = DateTimeFormatter.ofPattern("HHmm");
+    static final DateTimeFormatter FORMAT_FILE_TIME_STRING = DateTimeFormatter.ofPattern("HH:mm");
 
     EventWithStartTime(String description, String date, String startTime) {
         super(description, date);

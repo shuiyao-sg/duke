@@ -1,4 +1,4 @@
-package com.duke;
+package com.duke.task;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -6,8 +6,8 @@ import java.time.format.DateTimeFormatter;
 public class DeadlineWithTime extends Deadline {
 
     private LocalTime time;
-    private final DateTimeFormatter FORMAT_USER_INPUT_TIME = DateTimeFormatter.ofPattern("HHmm");
-    private final DateTimeFormatter FORMAT_FILE_TIME_STRING = DateTimeFormatter.ofPattern("HH:mm");
+    private static final DateTimeFormatter FORMAT_USER_INPUT_TIME = DateTimeFormatter.ofPattern("HHmm");
+    private static final DateTimeFormatter FORMAT_FILE_TIME_STRING = DateTimeFormatter.ofPattern("HH:mm");
 
     DeadlineWithTime(String description, String date, String time) {
         super(description, date);

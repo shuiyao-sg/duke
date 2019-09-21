@@ -1,4 +1,4 @@
-package com.duke.exceptions;
+package com.duke.exception;
 
 /**
  * Represents RedundantOperationException. Thrown when there is redundant operation.

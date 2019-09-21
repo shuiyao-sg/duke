@@ -7,3 +7,8 @@
 [E][Y] meeting at: 02 September 2019 12:00 to 13:00
 [D][N] r by: 02 September 2019
 [E][N] r at: 02 June 2019 15:00
+[T][N] read
+[T][N] read
+[D][N] r by: 02 September 2019
+[D][N] r by: 02 September 2019 15:00
+[E][N] project at: 02 September 2019 15:00 to 16:00

@@ -1,14 +1,14 @@
-package com.duke;
+package com.duke.task;
 
-import com.duke.exceptions.DukeIllegalArgumentException;
-import com.duke.exceptions.RedundantOperationException;
+import com.duke.exception.DukeIllegalArgumentException;
+import com.duke.exception.RedundantOperationException;
 
 /**
  * Encapsulates tasks.
  */
 public class Task {
     protected String description;
-    protected boolean isDone;
+    private boolean isDone;
 
     /**
      * Constructs a Task object.
@@ -63,7 +63,7 @@ public class Task {
      * @param s String representation of tasks in file.
      * @return Task Specified by the String.
      */
-    static Task genTaskFromFileString(String s) {
+    public static Task genTaskFromFileString(String s) {
         String status = s.charAt(4) + "";
         Task task = genDefaultTaskFromFileString(s);
         task.validateStatus(status);

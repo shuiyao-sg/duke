@@ -1,7 +1,7 @@
 package com.duke.command;
 
 import com.duke.Storage;
-import com.duke.Deadline;
+import com.duke.task.Deadline;
 import com.duke.TaskList;
 
 import java.io.IOException;

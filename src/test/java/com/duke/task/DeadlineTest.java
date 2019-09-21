@@ -1,6 +1,6 @@
-package com.duke;
+package com.duke.task;
 
-import com.duke.exceptions.DukeIllegalArgumentException;
+import com.duke.exception.DukeIllegalArgumentException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,9 +15,9 @@ public class DeadlineTest {
             fail();
         } catch (DukeIllegalArgumentException e) {
             String error = "Invalid input for deadline.\n"
-                    + "You may key in one of the following:\n"
-                    + "deadline <task> /by [dd/mm/yyyy]\n"
-                    + "deadline <task> /by [dd/mm/yyyy hhmm]";
+                    + "You may key in one of the following with valid values:\n"
+                    + "deadline <task> /by [dd/MM/yyyy]\n"
+                    + "deadline <task> /by [dd/MM/yyyy HHmm]";
             assertEquals(error, e.getMessage());
         }
     }

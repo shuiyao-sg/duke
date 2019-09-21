@@ -1,4 +1,4 @@
-package com.duke;
+package com.duke.task;
 
 /**
  * Encapsulates a ToDo task.

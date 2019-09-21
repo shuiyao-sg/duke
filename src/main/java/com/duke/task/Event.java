@@ -1,6 +1,6 @@
-package com.duke;
+package com.duke.task;
 
-import com.duke.exceptions.DukeIllegalArgumentException;
+import com.duke.exception.DukeIllegalArgumentException;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -13,9 +13,9 @@ public class Event extends Task {
 
     private LocalDate date;
 
-    private final DateTimeFormatter FORMAT_USER_INPUT_DATE = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static final DateTimeFormatter FORMAT_USER_INPUT_DATE = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private static final DateTimeFormatter FORMAT_FILE_DATE_STRING = DateTimeFormatter.ofPattern("dd MMMM yyyy");
-    private final static String INVALID_INPUT_ERROR_MESSAGE = "Invalid input for event.\n"
+    private static final String INVALID_INPUT_ERROR_MESSAGE = "Invalid input for event.\n"
             + "You may key in one of the following:\n"
             + "event <task> /at [dd/MM/yyyy]\n"
             + "event <task> /at [dd/MM/yyyy HHmm]\n"
@@ -67,7 +67,6 @@ public class Event extends Task {
             } else {
                 throw new DukeIllegalArgumentException("Invalid input for event");
             }
-
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new DukeIllegalArgumentException(INVALID_INPUT_ERROR_MESSAGE);
         } catch (DateTimeParseException e) {

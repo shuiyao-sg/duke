@@ -1,7 +1,7 @@
 package com.duke.command;
 
 import com.duke.Storage;
-import com.duke.Event;
+import com.duke.task.Event;
 import com.duke.TaskList;
 
 import java.io.IOException;

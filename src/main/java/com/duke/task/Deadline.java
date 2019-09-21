@@ -1,6 +1,6 @@
-package com.duke;
+package com.duke.task;
 
-import com.duke.exceptions.DukeIllegalArgumentException;
+import com.duke.exception.DukeIllegalArgumentException;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -12,9 +12,9 @@ import java.time.format.DateTimeParseException;
 public class Deadline extends Task {
 
     private LocalDate date;
-    private final DateTimeFormatter FORMAT_USER_INPUT_DATE = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    private final DateTimeFormatter FORMAT_FILE_DATE_STRING = DateTimeFormatter.ofPattern("dd MMMM yyyy");
-    private final static String INVALID_INPUT_ERROR_MESSAGE = "Invalid input for deadline.\n"
+    private static final DateTimeFormatter FORMAT_USER_INPUT_DATE = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static final DateTimeFormatter FORMAT_FILE_DATE_STRING = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+    private static final String INVALID_INPUT_ERROR_MESSAGE = "Invalid input for deadline.\n"
             + "You may key in one of the following with valid values:\n"
             + "deadline <task> /by [dd/MM/yyyy]\n"
             + "deadline <task> /by [dd/MM/yyyy HHmm]";
@@ -25,7 +25,7 @@ public class Deadline extends Task {
      * @param description Task description.
      * @param date        Deadline date.
      */
-    protected Deadline(String description, String date) {
+    Deadline(String description, String date) {
         super(description);
         this.date = LocalDate.parse(date, FORMAT_USER_INPUT_DATE);
     }
