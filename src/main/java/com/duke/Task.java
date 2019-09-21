@@ -90,7 +90,7 @@ public class Task {
 
         case 'E':
             String[] eventContentArray = taskContent.split("at:");
-            return new Event(eventContentArray[0].trim(), eventContentArray[1].trim());
+            return Event.genEventFromFile(eventContentArray[0].trim(), eventContentArray[1].trim());
         default:
             throw new DukeIllegalArgumentException("Invalid input from file");
         }

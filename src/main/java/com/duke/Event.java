@@ -1,14 +1,29 @@
 package com.duke;
 
-import com.duke.date.MyDate;
 import com.duke.exceptions.DukeIllegalArgumentException;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 /**
  * Encapsulates an Event task.
  */
 public class Event extends Task {
 
-    private MyDate at;
+    //private MyDate at;
+    protected LocalDate date;
+    //protected LocalDateTime start;
+    //protected LocalDateTime end;
+    protected final DateTimeFormatter FORMAT_USER_INPUT_DATE = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    //private final DateTimeFormatter FORMAT_USER_INPUT_DATE_TIME = DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
+    protected static final DateTimeFormatter FORMAT_FILE_DATE_STRING = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+    // private final DateTimeFormatter FORMAT_FILE_STRING = DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm");
+    private final static String INVALID_INPUT_ERROR_MESSAGE = "Invalid input for event.\n"
+            + "You may key in one of the following:\n"
+            + "event <task> /at [dd/MM/yyyy]\n"
+            + "event <task> /at [dd/MM/yyyy HHmm]\n"
+            + "event <task> /at [dd/MM/yyyy HHmm HHmm]";
 
     /**
      * Constructs an Event object.
@@ -16,9 +31,18 @@ public class Event extends Task {
      * @param description Task description.
      * @param at          Event date and time represented by String.
      */
-    Event(String description, String at) {
+    Event(String description, String date) {
         super(description);
-        this.at = MyDate.genMyDate(at);
+        this.date = LocalDate.parse(date, FORMAT_USER_INPUT_DATE);
+    }
+
+    Event(String description, String date, boolean isFromFile) {
+        super(description);
+        if (isFromFile) {
+            this.date = LocalDate.parse(date, FORMAT_FILE_DATE_STRING);
+        } else {
+            throw new DukeIllegalArgumentException("The input string is not from file");
+        }
     }
 
     /**
@@ -34,23 +58,58 @@ public class Event extends Task {
         try {
             des = newInputArray[0].trim();
             at = newInputArray[1].trim();
-            return new Event(des, at);
+
+            String[] dateTimeArray = at.split(" ");
+
+            if (dateTimeArray.length == 1) {
+                return new Event(des, at);
+            }
+
+//            String[] timeArray = dateTimeArray[1].split("-");
+
+            if (dateTimeArray.length == 2) {
+                return new EventWithStartTime(des, dateTimeArray[0], dateTimeArray[1]);
+            } else if (dateTimeArray.length == 3) {
+                return new EventWithEndTime(des, dateTimeArray[0], dateTimeArray[1], dateTimeArray[2]);
+            } else {
+                throw new DukeIllegalArgumentException("Invalid input for event");
+            }
+
         } catch (ArrayIndexOutOfBoundsException e) {
-            throw new DukeIllegalArgumentException("Invalid input for event.\n"
-                    + "You may key in one of the following:\n"
-                    + "event <task> /at [dd/mm/yyyy]\n"
-                    + "event <task> /at [dd/mm/yyyy hhmm]\n"
-                    + "event <task> /at [dd/mm/yyyy hhmm-hhmm]");
-        } catch (NumberFormatException e) {
-            throw new DukeIllegalArgumentException("Invalid input for time.\n"
-                    + "You may try one of these formats:\n"
-                    + "dd/mm/yyyy hhmm\n"
-                    + "dd/mm/yyyy hhmm-hhmm");
+            throw new DukeIllegalArgumentException(INVALID_INPUT_ERROR_MESSAGE);
+//        } catch (NumberFormatException e) {
+//            throw new DukeIllegalArgumentException("Invalid input for time.\n"
+//                    + "You may try one of these formats:\n"
+//                    + "dd/mm/yyyy hhmm\n"
+//                    + "dd/mm/yyyy hhmm-hhmm");
+        } catch (DateTimeParseException e) {
+            if (e.getMessage().contains("Invalid value")) {
+                throw new DukeIllegalArgumentException(e.getMessage());
+            } else {
+                throw new DukeIllegalArgumentException(INVALID_INPUT_ERROR_MESSAGE);
+            }
         }
     }
 
+    static Event genEventFromFile(String des, String at) {
+        String[] dateTimeArray = at.split(" ");
+        switch (dateTimeArray.length) {
+        case 3:
+            return new Event(des, at, true);
+        case 4:
+            return new EventWithStartTime(des, dateTimeArray[0] + " " + dateTimeArray[1] + " "
+                    + dateTimeArray[2], dateTimeArray[3], true);
+        case 6:
+            return new EventWithEndTime(des, dateTimeArray[0] + " " + dateTimeArray[1] + " "
+                    + dateTimeArray[2], dateTimeArray[3], dateTimeArray[5], true);
+        default:
+            throw new DukeIllegalArgumentException("Invalid input for event from file");
+        }
+    }
+
+
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " at: " + at.toString();
+        return "[E]" + super.toString() + " at: " + date.format(FORMAT_FILE_DATE_STRING);
     }
 }
