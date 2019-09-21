@@ -1,15 +1,6 @@
 package com.duke;
 
-import com.duke.command.ByeCommand;
-import com.duke.command.Command;
-import com.duke.command.DeadlineCommand;
-import com.duke.command.DeleteCommand;
-import com.duke.command.DoneCommand;
-import com.duke.command.EventCommand;
-import com.duke.command.FindCommand;
-import com.duke.command.ListCommand;
-import com.duke.command.ToDoCommand;
-import com.duke.command.UndoCommand;
+import com.duke.command.*;
 import com.duke.exceptions.DukeArrayIndexOutOfBoundsException;
 import com.duke.exceptions.DukeIllegalArgumentException;
 
@@ -60,7 +51,11 @@ public class Parser {
         if (inputArray[0].equals("todo")) {
             return new ToDoCommand(this.list, description);
         } else if (inputArray[0].equals("deadline")) {
-            return new DeadlineCommand(this.list, description);
+            //try {
+                return new DeadlineCommand(this.list, description);
+//            } catch (DateTimeException e) {
+//                throw new DukeIllegalArgumentException(e.getMessage());
+//            }
         } else if (inputArray[0].equals("event")) {
             return new EventCommand(this.list, description);
         } else if (inputArray[0].equals("find")) {

@@ -86,7 +86,8 @@ public class Task {
             return new ToDo(taskContent);
         case 'D':
             String[] deadlineContentArray = taskContent.split("by:");
-            return new Deadline(deadlineContentArray[0].trim(), deadlineContentArray[1].trim());
+            return Deadline.genDeadlineFromFile(deadlineContentArray[0].trim(), deadlineContentArray[1].trim());
+
         case 'E':
             String[] eventContentArray = taskContent.split("at:");
             return new Event(eventContentArray[0].trim(), eventContentArray[1].trim());
