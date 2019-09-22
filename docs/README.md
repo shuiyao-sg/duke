@@ -6,6 +6,8 @@
 
 >[1.2 Command format](#12-command-format)
 
+>[1.3 Important note](#13-important-note)
+
 [2. Features](#2-features)
 
 >[2.1 Adding a general task](#21-adding-a-general-task-todo)
@@ -41,6 +43,12 @@ Graphical User Interface (GUI).
     ( a ) means a is optional. ( ) should be removed from user input.
 
     a ^ b means user input can be either a or b but not both.
+    
+### 1.3 Important note
+Unexpected text format in duke.txt may cause exceptions and hence failure to start the application. To ensure normal
+functioning of Duke, please delete your `duke.txt` file (if any) before you launch Duke for the first time. You do not
+need to delete `duke.txt` from next launching onwards. To prevent unexpected encoding, please do not modify `duke.txt`
+with any external editor. You can only modify `duke.txt` within the application. 
 
 ## 2. Features
 ### 2.1 Adding a general task: `todo`
