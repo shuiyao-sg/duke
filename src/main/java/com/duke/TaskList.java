@@ -83,6 +83,7 @@ public class TaskList {
      * @return Task list with tasks containing input text.
      */
     public TaskList query(String text) {
+        assert !this.listBody.isEmpty() : "The task list is empty. Find command cannot be applied to empty list";
         List<Task> tasks = this.listBody.stream()
                 .filter(task -> task.toString().contains(text))
                 .collect(Collectors.toList());

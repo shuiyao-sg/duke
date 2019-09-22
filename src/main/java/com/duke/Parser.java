@@ -16,7 +16,7 @@ import com.duke.exception.DukeIllegalArgumentException;
 /**
  * Encapsulates a parser to deal with making sense of the user command.
  */
-public class Parser {
+class Parser {
     private TaskList list;
 
     /**
@@ -24,7 +24,7 @@ public class Parser {
      *
      * @param list Task list.
      */
-    public Parser(TaskList list) {
+    Parser(TaskList list) {
         this.list = list;
     }
 
