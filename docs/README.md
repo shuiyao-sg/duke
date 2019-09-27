@@ -71,7 +71,7 @@ Expected outcome:
 ### 2.2 Adding a task with deadline: *deadline*
 Adds a task with deadline to the task list.
 
-Format: `deadline <task> /by [dd/HH/yyyy] ([HHmm])`
+Format: `deadline <task> /by [dd/MM/yyyy] ([HHmm])`
 
 Example of usage:
 
@@ -149,7 +149,7 @@ Expected outcome:
 
 `Noted! I've removed this task:`
 
-`[E][N] project meeting at: 21 SEPTEMBER 2019 15:00 to 16:00`
+`[E][N] project meeting at: 21 September 2019 15:00 to 16:00`
 
 `Now you have 3 tasks in the list.`
 
