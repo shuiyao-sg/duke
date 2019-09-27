@@ -1,10 +1,10 @@
 package com.duke.task;
 
-import com.duke.exception.DukeIllegalArgumentException;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+
+import com.duke.exception.DukeIllegalArgumentException;
 
 /**
  * Encapsulates deadline task.
@@ -60,7 +60,7 @@ public class Deadline extends Task {
             } else if (dateTimeArray.length == 2) {
                 return new DeadlineWithTime(des, dateTimeArray[0], dateTimeArray[1]);
             } else {
-                throw new DukeIllegalArgumentException("Invalid input for deadline");
+                throw new DukeIllegalArgumentException(INVALID_INPUT_ERROR_MESSAGE);
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new DukeIllegalArgumentException(INVALID_INPUT_ERROR_MESSAGE);
@@ -82,7 +82,7 @@ public class Deadline extends Task {
             return new DeadlineWithTime(description, dateTimeArray[0] + " " + dateTimeArray[1] + " "
                     + dateTimeArray[2], dateTimeArray[3], true);
         default:
-            throw new DukeIllegalArgumentException("Invalid input for event from file");
+            throw new DukeIllegalArgumentException("Invalid input for deadline from file");
         }
     }
 

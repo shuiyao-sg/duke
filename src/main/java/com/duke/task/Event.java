@@ -1,10 +1,10 @@
 package com.duke.task;
 
-import com.duke.exception.DukeIllegalArgumentException;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+
+import com.duke.exception.DukeIllegalArgumentException;
 
 /**
  * Encapsulates an Event task.
@@ -65,7 +65,7 @@ public class Event extends Task {
             } else if (dateTimeArray.length == 3) {
                 return new EventWithEndTime(des, dateTimeArray[0], dateTimeArray[1], dateTimeArray[2]);
             } else {
-                throw new DukeIllegalArgumentException("Invalid input for event");
+                throw new DukeIllegalArgumentException(INVALID_INPUT_ERROR_MESSAGE);
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new DukeIllegalArgumentException(INVALID_INPUT_ERROR_MESSAGE);
